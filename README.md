@@ -1,2 +1,2 @@
-# Django-Inventory
+# Vehicle Configuration Tracking
 Inventory system 
