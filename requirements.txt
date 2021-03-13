@@ -1,0 +1,14 @@
+asgiref==3.2.7
+Django==3.0.2
+django-appconf==1.0.4
+django-crispy-forms==1.9.1
+django-bootstrap-breadcrumbs==0.9.2
+django-view-breadcrumbs==0.1.0
+django-filter==2.3.0
+django-multiselectfield==0.1.12
+psycopg2==2.8.5
+pytz==2020.1
+setuptools==41.2.0
+six==1.15.0
+sqlparse==0.3.1
+tablib==2.0.0
