@@ -11,12 +11,12 @@ class Setup(models.Model):
 class SetupParam(models.Model):
     name = models.CharField(max_length=100) # <SetupParamENUM> ?
     description = models.CharField(max_length=100, blank=True)
-
-    
+    value = models.FloatField()
 
 class Vehicle(models.Model):
     name = models.CharField(max_length=100) 
     description = models.CharField(max_length=100, blank=True)
+    
 
 class Assembly(models.Model):
     name = models.CharField(max_length=100) # <assemblyParamENUM> ?
