@@ -1,0 +1,9 @@
+{% extends 'vehicle_config/header.html' %}
+{% block content %}
+
+<h1>view stufff</h1>
+{% for vehicle in vehicles %}
+    <h1>vehicle - {{ vehicle.name }}</h1>
+{% endfor %}
+
+{% endblock content %}

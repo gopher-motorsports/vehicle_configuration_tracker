@@ -46,19 +46,22 @@ class Setup(models.Model):
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
     car = models.CharField(max_length=100, blank=False)
-    setup_params = models.ManyToManyField('SetupParam', blank=True)
-    setups_params = ArrayField(models.CharField(max_length=200), null=True, blank=True) #uncomment once you use postgres
+    #setup_params = models.ManyToManyField('SetupParam', blank=True)
+    setup_params = ArrayField(models.CharField(max_length=200), null=True, blank=True) #uncomment once you use postgres
+    
 
 
 
 class Vehicle(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True) #null=true temp
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
     assemblies = ArrayField(models.CharField(max_length=200), null=True, blank=True)
-    setups = models.ManyToManyField('Setup', blank=True)
+    setups = models.ManyToManyField('Setup', null=True, blank=True)
 
+    def __str__(self):
+        return self.name
 
     
 
