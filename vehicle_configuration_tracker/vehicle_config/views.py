@@ -83,6 +83,78 @@ def createSetup(request):
 
     context = {}
     return render(request, 'vehicle_config/createSetup.html', context)
+
+def createSetupParam(request): 
+    if request.method == 'POST':
+
+        name = request.POST['name']
+        description = request.POST['description']
+        parts = request.POST['parts']
+        assemblies = request.POST['assemblies']
+        value = request.POST['value']
+        
+
+        context = {
+            'name' : name,
+            'description' : description,
+            'parts' : parts,
+            'assemblies' : assemblies,
+            'value' : value,
+        }
+        
+        #SetupParam.objects.create(name=name, description=description, car=car, setup_params=setup_params)
+        #id = Setup.objects.filter(description=description).values('id')[0]['id']
+        msg = "successfully created setup parameter"
+
+        return render(request, 'vehicle_config/createSetupParam.html', {'msg':msg})
+
+    context = {}
+    return render(request, 'vehicle_config/createSetupParam.html', context)
+
+def createPart(request): 
+    if request.method == 'POST':
+
+        name = request.POST['name']
+        description = request.POST['description']
+
+        context = {
+            'name' : name,
+            'description' : description,
+        }
+        
+        Part.objects.create(name=name, description=description)
+        #id = Setup.objects.filter(description=description).values('id')[0]['id']
+        msg = "successfully created part"
+
+        return render(request, 'vehicle_config/createPart.html', {'msg':msg})
+
+    context = {}
+    return render(request, 'vehicle_config/createPart.html', context)
+
+def createAssembly(request): 
+    if request.method == 'POST':
+
+        name = request.POST['name']
+        description = request.POST['description']
+        parts = request.POST['parts']
+        assemblies = request.POST['assemblies']
+
+
+        context = {
+            'name' : name,
+            'description' : description,
+            'parts' : parts,
+            'assemblies' : assemblies
+        }
+        
+        #Part.objects.create(name=name, description=description)
+        #id = Setup.objects.filter(description=description).values('id')[0]['id']
+        msg = "successfully created assembly"
+
+        return render(request, 'vehicle_config/createAssembly.html', {'msg':msg})
+
+    context = {}
+    return render(request, 'vehicle_config/createAssembly.html', context)
     
 
 

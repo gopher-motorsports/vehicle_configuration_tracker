@@ -1,0 +1,23 @@
+{% extends 'vehicle_config/header.html' %}
+{% block content %}
+
+<form action="{% url 'createPart' %}" method="post">
+    {% csrf_token %}
+
+
+        <div>
+            <h3>Create part</h3>
+            <label>name</label>
+            <input type="text" name="name" required>
+            <label>description</label>
+            <input type="text" name="description">
+            <label>Submit</label>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    {{ msg }}
+
+
+
+{% endblock %}

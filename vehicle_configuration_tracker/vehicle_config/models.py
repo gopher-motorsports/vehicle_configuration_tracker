@@ -21,6 +21,7 @@ class Assembly(models.Model):
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
     parts = models.ManyToManyField('Part', blank=True)
+    assemblies = models.ManyToManyField('Assembly', blank=True)
 
     class Meta:
         verbose_name = _('Assembly')
