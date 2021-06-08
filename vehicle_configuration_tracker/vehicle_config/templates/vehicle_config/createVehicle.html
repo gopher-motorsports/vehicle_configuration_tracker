@@ -1,8 +1,62 @@
 {% extends 'vehicle_config/header.html' %}
 {% block content %}
 
-<form action="{% url 'createVehicle' %}" method="post">
+<div class="container-fluid py-2">
+    <form action="{% url 'createSetup' %}" method="post">
+        {% csrf_token %}
+        <h1 style="text-align:center">Create Vehicle</h1>
+    
+        <div class="container py-5">
+            <div class="row">
+              <div class="col-xl">
+                <div class="input-group input-group-lg mb-3">
+                    <span class="input-group-text">Name</span>
+                    <input type="text" class="form-control" name="name">
+                  </div>
+              </div>
+              <div class="col">
+                <div class="input-group input-group-lg mb-3">
+                    <span class="input-group-text">Assemblies</span>
+                    <input type="text" class="form-control" name="assemblies">
+                  </div>
+                <!-- <label>setup_params</label>
+                <input type="text" name="setup_params"> -->
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <!-- <label>description</label>
+                <input type="text" name="description" required> -->
+                <div class="input-group input-group-lg">
+                  
+                    <span class="input-group-text">Description</span>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                  </div>
+              </div>
+            </div>
+          
+          <div class="row py-5">
+            <div class="col">
+                <input class="btn btn-primary btn-lg" type="submit" value="Submit">
+    
+                <!-- <label>Submit</label>
+                <button type="submit">Submit</button> -->
+            </div>
+          </div>
+        </div>
+    
+        <h3 style="text-align:center"> {{ msg }} </h3>
+        
+    
+       
+    
+        </form>
+    
+        
+      </div>
+<!-- <form action="{% url 'createVehicle' %}" method="post">
     {% csrf_token %}
+
 
 
         <div>
@@ -20,7 +74,7 @@
         </div>
     </form>
 
-    {{ msg }}
+    {{ msg }} -->
 
 
 

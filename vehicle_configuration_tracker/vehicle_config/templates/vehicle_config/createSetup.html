@@ -1,23 +1,21 @@
 {% extends 'vehicle_config/header.html' %}
 {% block content %}
-<div class="container-fluid">
 
+<div class="container-fluid py-2">
 <form action="{% url 'createSetup' %}" method="post">
     {% csrf_token %}
-    <h3>Create Setup</h3>
+    <h1 style="text-align:center">Create Setup</h1>
 
-    <div class="container">
+    <div class="container py-5">
         <div class="row">
-          <div class="col">
-            <div class="input-group mb-3">
+          <div class="col-xl">
+            <div class="input-group input-group-lg mb-3">
                 <span class="input-group-text">Car</span>
-                <input type="text" class="form-control" name="car">
+                <input type="text" class="form-control" name="car" value={{ car }}>
               </div>
-            <!-- <label>car</label>
-            <input type="text" name="car"> -->
           </div>
           <div class="col">
-            <div class="input-group mb-3">
+            <div class="input-group input-group-lg mb-3">
                 <span class="input-group-text">Setup Parameter</span>
                 <input type="text" class="form-control" name="setup_params">
               </div>
@@ -29,16 +27,16 @@
           <div class="col">
             <!-- <label>description</label>
             <input type="text" name="description" required> -->
-            <div class="input-group">
-                <span class="input-group-text">With textarea</span>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
+            <div class="input-group input-group-lg">
+              
+                <span class="input-group-text">Description</span>
+                <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
               </div>
           </div>
         </div>
-      </div>
-      <div class="row">
+      <div class="row py-5">
         <div class="col">
-            <input class="btn btn-primary" type="submit" value="Submit">
+            <input class="btn btn-primary btn-lg" type="submit" value="Submit">
 
             <!-- <label>Submit</label>
             <button type="submit">Submit</button> -->
@@ -46,10 +44,8 @@
       </div>
     </div>
 
+    <h3 style="text-align:center"> {{ msg }} </h3>
     </form>
-
-    {{ msg }}
-
-</div>
+  </div>
 
 {% endblock %}

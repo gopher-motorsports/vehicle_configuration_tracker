@@ -80,9 +80,9 @@ def createSetup(request):
         msg = "successfully created setup with id: " + str(id)
 
         return render(request, 'vehicle_config/createSetup.html', {'msg':msg})
-
-    context = {}
-    return render(request, 'vehicle_config/createSetup.html', context)
+    
+    st = "test"
+    return render(request, 'vehicle_config/createSetup.html', st)
 
 def createSetupParam(request): 
     if request.method == 'POST':
@@ -156,6 +156,7 @@ def createAssembly(request):
     context = {}
     return render(request, 'vehicle_config/createAssembly.html', context)
     
+
 
 
 
