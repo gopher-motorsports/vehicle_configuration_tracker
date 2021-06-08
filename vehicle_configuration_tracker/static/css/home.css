@@ -1,18 +1,9 @@
-body, html {
-    height: 100%;
-  }
 
 
+body{ padding-top: 70px; }
 
-.body_home {
+.background_image{
+  width: 50%;
+  height: 50%;
 
- 
-    background-image: url(../images/f1_car.jpg);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    
-    
 }
