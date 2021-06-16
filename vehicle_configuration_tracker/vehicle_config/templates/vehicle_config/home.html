@@ -2,10 +2,28 @@
 {% block content %}
 
 {% load static %}
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="background_image">
         <img src="{% static "images/f1_car.jpg" %}" class="img-fluid" />
     </div>
 <h1>Homeeeeeeeeeee</h1>
+</div> -->
+<div class="container-fluid">
+<style type="text/css">
+    body {
+      background-image: url({% static "images/f1_car.jpg" %});
+      background-size: cover;
+    }
+    </style>
+    
+    <div class="d-flex justify-content-center align-items-center align-middle h-100">
+        <h1 style="color:#fff; font-size: 50px; padding-top: 20%;">Vehicle Configuration Tracker</h1>
+
+    </div>
+
+
+
 </div>
+
+
 {% endblock %}

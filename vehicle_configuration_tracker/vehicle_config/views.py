@@ -30,10 +30,6 @@ def view(request):
     'vehicles' : Vehicle.objects.all(),
     'setups' : Setup.objects.all()
     }
-    
-
-    
-        
 
     return render(request, 'vehicle_config/view.html', context)
 
@@ -53,6 +49,10 @@ def createVehicle(request):
 
         if Vehicle.objects.filter(name=name).exists():
             msg = "car exists"
+        elif assemblies == "" and setups == "":
+            v1 = Vehicle(name=name, description=description)
+            v1.save()
+            msg = "successfull added vehicle"
         else:
             v1 = Vehicle(name=name, description=description, assemblies=assemblies, setups=setups)
             v1.save()  
@@ -81,8 +81,12 @@ def createSetup(request):
 
         return render(request, 'vehicle_config/createSetup.html', {'msg':msg})
     
-    st = "test"
-    return render(request, 'vehicle_config/createSetup.html', st)
+    context = {
+    'vehicles' : Vehicle.objects.all(),
+    'setups' : Setup.objects.all(), 
+    'st' : "car4"
+    }
+    return render(request, 'vehicle_config/createSetup.html', context)
 
 def createSetupParam(request): 
     if request.method == 'POST':

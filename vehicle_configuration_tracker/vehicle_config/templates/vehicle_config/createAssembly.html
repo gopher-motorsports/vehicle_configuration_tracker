@@ -1,11 +1,58 @@
 {% extends 'vehicle_config/header.html' %}
 {% block content %}
 
+<div class="container-fluid py-2">
 <form action="{% url 'createAssembly' %}" method="post">
     {% csrf_token %}
+        <h1 class="m1">Create Setup Parameter</h1>
+
+        <div class = "container py-5">
+            <div class="row">
+                <div class="col-xl">
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text mw">Name</span>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl">
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text mw">Parts</span>
+                        <input type="text" class="form-control" parts="parts">
+                    </div>
+                </div>
+
+                <div class="col-xl">
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text mw">Assemblies</span>
+                        <input type="text" class="form-control" assemblies="assemblies" required>
+                    </div>
+                </div>
+            </div>
 
 
-        <div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text mwd">Description</span>
+                        <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-4">
+                <div class="col">
+                    <input class="btn btn-primary btn-lg mw" type="submit" value="Submit">
+                </div>
+            </div>
+        </div>
+        <h3 style="text-align:center"> {{ msg }} </h3>
+    </form>
+</div>
+
+
+        <!-- <div>
             <h3>Create Assembly</h3>
             <label>name</label>
             <input type="text" name="name" required>
@@ -20,7 +67,7 @@
         </div>
     </form>
 
-    {{ msg }}
+    {{ msg }} -->
 
 
 
