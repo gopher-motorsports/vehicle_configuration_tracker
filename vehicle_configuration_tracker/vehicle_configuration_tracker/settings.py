@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # apps added
-    'vehicle_config.apps.VehicleConfigConfig'
+    'vehicle_config.apps.VehicleConfigConfig',
+    'multiselectfield',
+
+    
+
 ]
 
 MIDDLEWARE = [
@@ -69,7 +73,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
         },
+        
     },
 ]
 

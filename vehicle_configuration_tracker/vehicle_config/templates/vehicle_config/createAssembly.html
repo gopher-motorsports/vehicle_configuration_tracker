@@ -4,7 +4,7 @@
 <div class="container-fluid py-2">
 <form action="{% url 'createAssembly' %}" method="post">
     {% csrf_token %}
-        <h1 class="m1">Create Setup Parameter</h1>
+        <h1 class="m1">Create Assembly</h1>
 
         <div class = "container py-5">
             <div class="row">
@@ -20,14 +20,14 @@
                 <div class="col-xl">
                     <div class="input-group input-group-lg mb-3">
                         <span class="input-group-text mw">Parts</span>
-                        <input type="text" class="form-control" parts="parts">
+                        <input type="text" class="form-control" name="parts">
                     </div>
                 </div>
 
                 <div class="col-xl">
                     <div class="input-group input-group-lg mb-3">
                         <span class="input-group-text mw">Assemblies</span>
-                        <input type="text" class="form-control" assemblies="assemblies" required>
+                        <input type="text" class="form-control" name="assemblies">
                     </div>
                 </div>
             </div>

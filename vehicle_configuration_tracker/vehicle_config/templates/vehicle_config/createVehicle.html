@@ -35,19 +35,18 @@
               <input type="text" name="setup_params"> -->
             </div>
           </div>
-         
-
-            <div class="row">
-              <div class="col">
-                <!-- <label>description</label>
-                <input type="text" name="description" required> -->
-                <div class="input-group input-group-lg">
-                  
-                    <span class="input-group-text mwd">Description</span>
-                    <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
-                  </div>
-              </div>
+        
+          <div class="row">
+            <div class="col">
+              <div class="input-group input-group-lg">
+                
+                  <span class="input-group-text mwd">Description</span>
+                  <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
+                </div>
             </div>
+          </div>
+
+
           
           <div class="row py-4">
             <div class="col">
@@ -57,12 +56,31 @@
                 <button type="submit">Submit</button> -->
             </div>
           </div>
-        </div>
+
+          <div class="row">
+            <select class="js-example-basic-multiple" id="test_id" name="states[]" multiple="multiple">
+              <option value="AL">Alabama</option>
+              <option value="WY">Wyoming</option>
+            </select>
+
+          </div>
+
+         
+
+
+
+
     
         <h3 style="text-align:center"> {{ msg }} </h3>     
     
         </form>  
+
+
+        
         
       </div>
+
+
+      
 
 {% endblock %}
