@@ -3,7 +3,9 @@ from datetime import datetime
 from .models import Vehicle, Setup, Part, Assembly, SetupParam
 import json
 from django.core import serializers
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.shortcuts import (get_object_or_404, render, HttpResponseRedirect)
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 def home(request):
@@ -42,6 +44,17 @@ def view(request):
 
     return render(request, 'vehicle_config/view.html', context)
 
+
+# class PartListView(ListView):
+#     model = Part
+#     template_name = 'vehicle_config/view.html'
+#     context_object_name = 'parts'
+#     ordering = ['id']
+
+
+
+
+
 def createPart(request): 
     if request.method == 'POST':
 
@@ -54,6 +67,48 @@ def createPart(request):
 
     context = {}
     return render(request, 'vehicle_config/createPart.html', context)
+
+def editPart(request, pk): 
+    part = get_object_or_404(Part, id=pk)
+    if request.method == 'POST':
+        
+
+        name = request.POST['name']
+        description = request.POST['description']
+        Part.objects.filter(pk=part.id).update(name=name, description=description)
+
+        msg = "successfully edited part"
+        context = {
+            'vehicles' : Vehicle.objects.all(),
+            'setups' : Setup.objects.all(),
+            'parts' : Part.objects.all(),
+            'setups' : Setup.objects.all(),
+            'setup_params' : SetupParam.objects.all(),
+            }
+
+
+        return render(request, 'vehicle_config/view.html', context)
+        
+        
+    context = {'id': part.id, 'name': part.name, 'description': part.description}
+    return render(request, 'vehicle_config/editPart.html', context)
+
+def deletePart(request, pk):
+    part = get_object_or_404(Part, id=pk)
+    if request.method == 'POST':
+        part.delete()
+        context = {
+            'vehicles' : Vehicle.objects.all(),
+            'setups' : Setup.objects.all(),
+            'parts' : Part.objects.all(),
+            'setups' : Setup.objects.all(),
+            'setup_params' : SetupParam.objects.all(),
+            }
+        return render(request, 'vehicle_config/view.html', context)
+    context = {'id': part.id, 'name': part.name, 'description': part.description}
+    return render(request, 'vehicle_config/deletePart.html', context)
+
+        
 
 
 def createSetup(request): 

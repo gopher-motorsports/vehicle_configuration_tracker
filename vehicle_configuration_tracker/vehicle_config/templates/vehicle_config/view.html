@@ -3,8 +3,12 @@
 
 <h1>view stufff</h1>
 {% for part in parts %}
-    <a href="#" class="link-primary"><h1>Part - {{ part.name }}</h1></a>
+    <a href="{% url 'editPart' part.id %}" class="link-primary"><h1>Part - {{ part.name }}</h1></a>
     
 {% endfor %}
+
+
+  
+  
 
 {% endblock content %}

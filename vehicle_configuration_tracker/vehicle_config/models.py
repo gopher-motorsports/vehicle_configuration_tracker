@@ -5,12 +5,14 @@ from django.utils.timezone import now
 from datetime import datetime 
 from django.utils.translation import ugettext_lazy as _
 from multiselectfield import MultiSelectField
-
+from safedelete.models import SafeDeleteModel
+from safedelete.models import SOFT_DELETE_CASCADE
 
 
 # Create your models here.
 
-class Part(models.Model):
+class Part(SafeDeleteModel, models.Model):
+    _safedelete_policy = SOFT_DELETE_CASCADE
     name = models.CharField(max_length=100) 
     description = models.TextField()
     date_modifed = models.DateTimeField(auto_now_add=True)
@@ -20,7 +22,8 @@ class Part(models.Model):
     def __str__(self):
         return self.name
 
-class Assembly(models.Model):
+class Assembly(SafeDeleteModel, models.Model):
+    _safedelete_policy = SOFT_DELETE_CASCADE
     name = models.CharField(max_length=100) # <assemblyParamENUM> ?
     description = models.TextField()
     date_modifed = models.DateTimeField(auto_now_add=True)
@@ -36,7 +39,8 @@ class Assembly(models.Model):
     # parent vehicle
     
 
-class SetupParam(models.Model):
+class SetupParam(SafeDeleteModel, models.Model):
+    _safedelete_policy = SOFT_DELETE_CASCADE
     name = models.CharField(max_length=100) 
     description = models.TextField()
     date_modifed = models.DateTimeField(auto_now_add=True)
@@ -48,7 +52,8 @@ class SetupParam(models.Model):
 
 
 
-class Setup(models.Model):
+class Setup(SafeDeleteModel, models.Model):
+    _safedelete_policy = SOFT_DELETE_CASCADE
     name = models.CharField(max_length=100)
     description = models.TextField()
     date_modifed = models.DateTimeField(auto_now_add=True)
@@ -58,9 +63,8 @@ class Setup(models.Model):
     #setup_params = ArrayField(models.CharField(max_length=200), null=True, blank=True) #uncomment once you use postgres
     
 
-
-
-class Vehicle(models.Model):
+class Vehicle(SafeDeleteModel, models.Model):
+    _safedelete_policy = SOFT_DELETE_CASCADE
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True) #null=true temp
     date_modifed = models.DateTimeField(auto_now_add=True)

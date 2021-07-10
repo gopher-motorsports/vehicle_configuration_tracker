@@ -1,0 +1,39 @@
+{% extends 'vehicle_config/header.html' %}
+{% block content %}
+
+<div class="container-fluid py-2">
+    <h1 class="m1">Delete Confirmation Page</h1>
+
+    <!-- <div class="row justify-content-md-center">
+        <div class="element">
+            
+                <form action="{% url 'deletePart' pk=id %}" method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-primary btn-lg mw" type="submit" value="Yes">
+                    <a href="{% url 'view' %}" class="btn btn-primary btn-lg active mw" role="button" aria-pressed="true">No, return to View</a>
+                </form>
+           
+            </div>
+    </div> -->
+    <div class="centertwo">
+        <div class="row"> <h2>Are you sure you want to delete this part?</h2></div>
+        <div class="row"> <h2>Part ID: {{ id }} </h2></div>
+        <div class="row"> <h2>Part Name: {{ name }} </h2></div>
+        <div class="row">
+        <form action="{% url 'deletePart' pk=id %}" method="post">
+            {% csrf_token %}
+            <input class="btn btn-primary btn-lg mw" type="submit" value="Yes">
+            <a href="{% url 'view' %}" class="btn btn-primary btn-lg active mw" role="button" aria-pressed="true">No</a>
+        </form>
+    </div>
+        
+
+    </div>
+
+  
+</div>
+
+ 
+
+
+{% endblock %}

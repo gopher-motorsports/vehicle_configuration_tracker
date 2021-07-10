@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     # apps added
     'vehicle_config.apps.VehicleConfigConfig',
     'multiselectfield',
-
+    'safedelete',
     
 
 ]
