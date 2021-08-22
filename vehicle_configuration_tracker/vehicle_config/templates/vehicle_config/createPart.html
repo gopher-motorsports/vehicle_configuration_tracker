@@ -2,23 +2,26 @@
 {% block content %}
 
 <div class="container-fluid py-2">
-<form action="{% url 'createPart' %}" method="post">
+<form method="post">
     {% csrf_token %}
     <h1 class="m1">Create Part</h1>
 
+
         <div class = "container py-5">
+        
             <div class="row">
                 <div class="col-xl">
                     <div class="input-group input-group-lg mb-3">
                         <span class="input-group-text mw">Name</span>
-                        <input type="text" class="form-control" name="name" required>
-
-
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
-
-                    
-
                 </div>
+                <div class="col-xl">
+                  <div class="input-group input-group-lg mb-3">
+                      <span class="input-group-text mw">Parent Assembly</span>
+                      <input type="text" class="form-control" value="{{ parent_assembly.name }}" aria-label="Disabled input example" disabled readonly>
+                  </div>
+              </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -34,11 +37,6 @@
                 </div>
             </div>
           </div>
-          <h3 style="text-align:center"> {{ msg }} </h3>
         </form>
-
-
-
-
     </div>
     {% endblock %}

@@ -1,82 +1,48 @@
 {% extends 'vehicle_config/header.html' %}
 {% block content %}
+
 <div class="container-fluid py-2">
-    <form action="{% url 'createSetupParam' %}" method="post">
-        {% csrf_token %}
-        <h1 class="m1">Create Setup Parameter</h1>
+<form method="post">
+    {% csrf_token %}
+    <h1 class="m1">Create Setup Parameter</h1>
 
-            <div class = "container py-5">
-                <div class="row">
-                    <div class="col-xl">
-                        <div class="input-group input-group-lg mb-3">
-                            <span class="input-group-text mw">Name</span>
-                            <input type="text" class="form-control" name="name" required>
-                        </div>
-                    </div>
 
-                    <div class="col-xl">
-                        <div class="input-group input-group-lg mb-3">
-                            <span class="input-group-text mw">Value</span>
-                            <input type="text" class="form-control" name="value" required>
-                        </div>
+        <div class = "container py-5">
+        
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text mw">Name</span>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-xl">
-                        <div class="input-group input-group-lg mb-3">
-                            <span class="input-group-text mw">Parts</span>
-                            <input type="text" class="form-control" name="parts">
-                        </div>
-                    </div>
-
-                    <div class="col-xl">
-                        <div class="input-group input-group-lg mb-3">
-                            <span class="input-group-text mw">Assemblies</span>
-                            <input type="text" class="form-control" name="assemblies">
-                        </div>
+                <div class="col">
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text mw">Value</span>
+                        <input type="text" class="form-control" id="value" name="value" required>
                     </div>
                 </div>
-
-
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-text mwd">Description</span>
-                            <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
-                        </div>
+                <div class="col">
+                  <div class="input-group input-group-lg mb-3">
+                      <span class="input-group-text mw">Parent Setup</span>
+                      <input type="text" class="form-control" value="{{ parent_setup.name }}" aria-label="Disabled input example" disabled readonly>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text mwd">Description</span>
+                        <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
                     </div>
                 </div>
-                <div class="row py-4">
-                    <div class="col">
-                        <input class="btn btn-primary btn-lg mw" type="submit" value="Submit">
-                    </div>
+            </div>
+            <div class="row py-4">
+                <div class="col">
+                    <input class="btn btn-primary btn-lg mw" type="submit" value="Submit">
                 </div>
-        </div>
-        <h3 style="text-align:center"> {{ msg }} </h3>
-    </form>
-</div>
-
-
-        <!-- <div>
-            <h3>Create Setup Parameter</h3>
-            <label>name</label>
-            <input type="text" name="name" required>
-            <label>description</label>
-            <input type="text" name="description">
-            <label>parts</label>
-            <input type="text" name="parts">
-            <label>assemblies</label>
-            <input type="text" name="assemblies">
-            <label>value</label>
-            <input type="text" name="value">
-            <label>Submit</label>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
-
-    {{ msg }} -->
-
-
-
-{% endblock %}
+            </div>
+          </div>
+        </form>
+    </div>
+    {% endblock %}

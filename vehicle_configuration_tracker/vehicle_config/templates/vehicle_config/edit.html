@@ -3,15 +3,18 @@
 
 <div class="container-fluid py-2">
 <form method="post">
+
     {% csrf_token %}
-    <h1 class="m1">Create Part</h1>
+    <h1 class="m1">Edit {{ obj }}</h1>
+
+    
 
         <div class = "container py-5">
             <div class="row">
                 <div class="col-xl">
                     <div class="input-group input-group-lg mb-3">
                         <span class="input-group-text mw">Name</span>
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" class="form-control" name="name" required value= "{{ name }}">
 
 
                     </div>
@@ -24,17 +27,21 @@
                 <div class="col">
                     <div class="input-group input-group-lg">
                         <span class="input-group-text mwd">Description</span>
-                        <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
+                        <textarea class="form-control" aria-label="With textarea" id="description" name="description">{{ description }}</textarea>
                     </div>
                 </div>
             </div>
             <div class="row py-4">
                 <div class="col">
-                    <input class="btn btn-primary btn-lg mw" type="submit" value="Submit">
+                    <input class="btn btn-primary btn-lg mw" type="submit" value="Update">
+
+
                 </div>
+                
+                
             </div>
           </div>
-          <h3 style="text-align:center"> {{ msg }} </h3>
+          
         </form>
 
 

@@ -68,3 +68,9 @@ span {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.card-header{
+  background-color:#800000; color:#fff;
+}
+
+.mws{ background-color:#800000; color:#fff; }

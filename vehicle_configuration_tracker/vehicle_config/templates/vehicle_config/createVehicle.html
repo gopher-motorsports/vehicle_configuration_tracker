@@ -2,85 +2,42 @@
 {% block content %}
 
 <div class="container-fluid py-2">
-    <form action="{% url 'createVehicle' %}" method="post">
-        {% csrf_token %}
-        <h1 class="m1">Create Vehicle</h1>
-    
-        <div class="container-fluid py-5">
+<form action="{% url 'createVehicle' %}" method="post">
+    {% csrf_token %}
+    <h1 class="m1">Create Vehicle</h1>
 
+        <div class = "container py-5">
             <div class="row">
-              <div class="col-xl">
-                <div class="input-group input-group-lg mb-3">
-                    <span class="input-group-text mw">Name</span>
-                    <input type="text" class="form-control" name="name" required>
-                  </div>
-              </div>
+                <div class="col-xl">
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text mw">Name</span>
+                        <input type="text" class="form-control" name="name" required>
 
-              <div class="col">
-                <div class="input-group input-group-lg mb-3">
-                    <span class="input-group-text mw">Assemblies</span>
-                    <input type="text" class="form-control" name="assemblies">
-                  </div>
-                <!-- <label>setup_params</label>
-                <input type="text" name="setup_params"> -->
-              </div>
-            
 
-            <div class="col">
-              <div class="input-group input-group-lg mb-3">
-                  <span class="input-group-text mw">Setups</span>
-                  <input type="text" class="form-control" name="setups">
-                </div>
-              <!-- <label>setup_params</label>
-              <input type="text" name="setup_params"> -->
-            </div>
-          </div>
-        
-          <div class="row">
-            <div class="col">
-              <div class="input-group input-group-lg">
-                
-                  <span class="input-group-text mwd">Description</span>
-                  <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
+                    </div>
+
+
                 </div>
             </div>
-          </div> 
-
-
-          
-          <div class="row py-4">
-            <div class="col">
-                <input class="btn btn-primary btn-lg mw" type="submit" value="Submit">
-    
-                <!-- <label>Submit</label>
-                <button type="submit">Submit</button> -->
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text mwd">Description</span>
+                        <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-4">
+                <div class="col">
+                    <input class="btn btn-primary btn-lg mw" type="submit" value="Submit">
+                </div>
             </div>
           </div>
-
-          <div class="row">
-            <select class="js-example-basic-multiple" id="test_id" name="states[]" multiple="multiple">
-              <option value="AL">Alabama</option>
-              <option value="WY">Wyoming</option>
-            </select>
-
-          </div>
-
-         
+          <h3 style="text-align:center"> {{ msg }} </h3>
+        </form>
 
 
 
 
-    
-        <h3 style="text-align:center"> {{ msg }} </h3>     
-    
-        </form>  
-
-
-        
-        
-      </div>
-
-
-      
-
-{% endblock %}
+    </div>
+    {% endblock %}

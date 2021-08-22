@@ -11,32 +11,63 @@ from safedelete.models import SOFT_DELETE_CASCADE
 
 # Create your models here.
 
-class Part(SafeDeleteModel, models.Model):
+class Vehicle(SafeDeleteModel, models.Model):
     _safedelete_policy = SOFT_DELETE_CASCADE
-    name = models.CharField(max_length=100) 
-    description = models.TextField()
+    name = models.CharField(max_length=100)
+    description = models.TextField(null=True, blank=True) #null=true temp
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
-    # parent assemblies
+
+    #dont need fields for these as they can be accesses by object.setup_set.all() ### add _set.all() at the end to get childs
+
+    #assemblies = ArrayField(models.CharField(max_length=200), null=True, blank=True)
+    # assemblies = models.ManyToManyField('Assembly', null=True, blank=True) 
+    # setups = models.ManyToManyField('Setup', null=True, blank=True)
 
     def __str__(self):
         return self.name
 
 class Assembly(SafeDeleteModel, models.Model):
     _safedelete_policy = SOFT_DELETE_CASCADE
-    name = models.CharField(max_length=100) # <assemblyParamENUM> ?
+    name = models.CharField(max_length=100) 
     description = models.TextField()
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
-    parts = models.ManyToManyField('Part', blank=True)
-    assemblies = models.ManyToManyField('Assembly', blank=True)
-    #test = MultiSelectField(choices=Part.objects.all(), blank=True)
+    parent_vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, null=True, blank=False) ## one to many
+
+    # parts = models.ManyToManyField('Part', blank=True)
+    assemblies = models.ManyToManyField("self", symmetrical=False)
+    #is subassembly bool
+    isSubassembly = models.BooleanField()
+    
 
     class Meta:
         verbose_name = _('Assembly')
         verbose_name_plural = _('Assemblies')
-    # sub assemblies
-    # parent vehicle
+
+class Setup(SafeDeleteModel, models.Model):
+    _safedelete_policy = SOFT_DELETE_CASCADE
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    date_modifed = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(default=datetime.now)
+    parent_vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, null=True, blank=False) #one to many
+    # setup_params = models.ManyToManyField('SetupParam', blank=True)
+
+    
+
+class Part(SafeDeleteModel, models.Model):
+    _safedelete_policy = SOFT_DELETE_CASCADE
+    name = models.CharField(max_length=100) 
+    description = models.TextField()
+    date_modifed = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(default=datetime.now)
+    parent_assembly = models.ForeignKey(Assembly, on_delete=models.CASCADE, null=True, blank=False) #one to many, parent_assembly required as null=false by default
+
+    def __str__(self):
+        return self.name
+
+
     
 
 class SetupParam(SafeDeleteModel, models.Model):
@@ -45,36 +76,19 @@ class SetupParam(SafeDeleteModel, models.Model):
     description = models.TextField()
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
-    parts = models.ManyToManyField('Part', blank=True)
-    assemblies = models.ManyToManyField('Assembly', blank=True)
+
+    parts = models.ManyToManyField('Part', blank=True) # ??
+    assemblies = models.ManyToManyField('Assembly', blank=True) # ??
+
     value = models.FloatField()
-    # parent setup??
+    parent_setup = models.ForeignKey(Setup, on_delete=models.CASCADE, null=True, blank=False) #one to many
 
 
 
-class Setup(SafeDeleteModel, models.Model):
-    _safedelete_policy = SOFT_DELETE_CASCADE
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    date_modifed = models.DateTimeField(auto_now_add=True)
-    date_created = models.DateTimeField(default=datetime.now)
-    car = models.CharField(max_length=100, blank=False) #change to many to many
-    setup_params = models.ManyToManyField('SetupParam', blank=True)
-    #setup_params = ArrayField(models.CharField(max_length=200), null=True, blank=True) #uncomment once you use postgres
+
     
 
-class Vehicle(SafeDeleteModel, models.Model):
-    _safedelete_policy = SOFT_DELETE_CASCADE
-    name = models.CharField(max_length=100)
-    description = models.TextField(null=True, blank=True) #null=true temp
-    date_modifed = models.DateTimeField(auto_now_add=True)
-    date_created = models.DateTimeField(default=datetime.now)
-    #assemblies = ArrayField(models.CharField(max_length=200), null=True, blank=True)
-    assemblies = models.ManyToManyField('Assembly', null=True, blank=True)
-    setups = models.ManyToManyField('Setup', null=True, blank=True)
 
-    def __str__(self):
-        return self.name
 
     
 
