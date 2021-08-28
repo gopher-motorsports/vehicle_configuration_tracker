@@ -2,47 +2,93 @@
 {% block content %}
 
 <div class="container-fluid py-2">
-<form method="post">
+<form method="post" autocomplete="off">
     {% csrf_token %}
     <h1 class="m1">Create Setup Parameter</h1>
 
 
-        <div class = "container py-5">
+       
         
-            <div class="row">
-                <div class="col">
+            <div class="row mt-4">
+                <div class="col col-lg-4 offset-lg-2 col-12">
                     <div class="input-group input-group-lg mb-3">
-                        <span class="input-group-text mw">Name</span>
+                        <span class="input-group-text mwgg">Name</span>
                         <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col col-lg-4 col-12">
                     <div class="input-group input-group-lg mb-3">
-                        <span class="input-group-text mw">Value</span>
-                        <input type="text" class="form-control" id="value" name="value" required>
+                        <span class="input-group-text mwgg">Parent Setup</span>
+                        <input type="text" class="form-control" value="{{ parent_setup.name }}" aria-label="Disabled input example" disabled readonly>
                     </div>
                 </div>
-                <div class="col">
-                  <div class="input-group input-group-lg mb-3">
-                      <span class="input-group-text mw">Parent Setup</span>
-                      <input type="text" class="form-control" value="{{ parent_setup.name }}" aria-label="Disabled input example" disabled readonly>
-                  </div>
-              </div>
+                    
             </div>
+
             <div class="row">
-                <div class="col">
+                
+                
+                <div class="col col-lg-4 offset-lg-2 col-12">
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text mwgg">Value</span>
+                        <input type="text" class="form-control" type="number" id="value" name="value" required>
+                    </div>
+              </div>
+              <div class="col col-lg-4 col-12">
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text mwgg">Units</span>
+                        <label for="units" class="form-label"></label>
+                        <input list="datalistOptions" type="text" class="form-control" id="units" name="units">
+                        <datalist id="datalistOptions">
+                            <option value="cm">
+                            <option value="m">
+                            <option value="mm">
+                            <option value="g">
+                            <option value="kg">
+                            <option value="N">
+                            <option value="N &middot; m">
+                            <option value="hp"> 
+                            <option value="KW"> 
+                            <option value="N">
+                            <option value="&deg; C">
+                            <option value="V">
+                            <option value="A">
+                            <option value="%">
+                            <option value="None">
+                                              
+                        </datalist>
+
+                    </div>
+                </div>
+
+               
+            </div>
+
+            <div class="row">
+                <div class="col col-lg-8 offset-lg-2 col-12">
                     <div class="input-group input-group-lg">
-                        <span class="input-group-text mwd">Description</span>
+                        <span class="input-group-text mwgg">Description</span>
                         <textarea class="form-control" aria-label="With textarea" id="description" name="description"></textarea>
                     </div>
                 </div>
             </div>
-            <div class="row py-4">
-                <div class="col">
-                    <input class="btn btn-primary btn-lg mw" type="submit" value="Submit">
+
+            <div class="row mt-3">
+                <div class="col offset-lg-2"> 
+                    <input class="btn btn-outline-primary btn-lg mws" type="submit" value="Submit">
+                            
+                    <a href="www.mypage.com" onclick="window.history.go(-1); return false;">
+                        <button type="button" class="btn btn-outline-primary btn-lg mws">Cancel</button>
+                    </a>
                 </div>
+
             </div>
-          </div>
+          
+       
+
+
+        
+        
         </form>
     </div>
     {% endblock %}

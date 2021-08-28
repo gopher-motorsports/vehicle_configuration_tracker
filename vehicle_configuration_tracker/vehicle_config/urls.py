@@ -14,6 +14,9 @@ urlpatterns = [
     path('view/Assembly/<int:pk>/', views.viewAssembly, name='viewAssembly'),
     path('view/Part/<int:pk>/', views.viewPart, name='viewPart'),
     path('view/SetupParam/<int:pk>/', views.viewSetupParam, name='viewSetupParam'),
+    path('view/spPart/<int:spPk>/<int:pk>/<str:act>/', views.spPart, name='spPart'),
+    path('view/spAssembly/<int:spPk>/<int:pk>/<str:act>/', views.spAssembly, name='spAssembly'),
+
 
     path('edit/<str:obj>/<int:pk>/', views.edit, name='edit'),
     path('delete/<str:obj>/<int:pk>/', views.delete, name='delete'),

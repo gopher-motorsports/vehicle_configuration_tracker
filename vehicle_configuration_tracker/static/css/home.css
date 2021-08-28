@@ -1,12 +1,46 @@
 
 body{ padding-top: 70px; }
 
-.background_image{
-  width: 90%;
-  height: 90%;
-
+body, html {
+  height: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("/static/images/f1_car.jpg") no-repeat;
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  
+  color: white;
+  font-weight: bold;
+
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
 
 textarea {
   width: 300px;
@@ -48,12 +82,16 @@ span {
 }
 
 .centertwo {
-  height: 150px;
-  top: 60%;
-  line-height: 100px;
+  font-weight: bold;
+
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
   text-align: center;
-  padding-top: 250px;
-  border: 2px;
  
 }
 
@@ -74,3 +112,43 @@ span {
 }
 
 .mws{ background-color:#800000; color:#fff; }
+
+.mwgg{ background-color:#800000; color:#fff; width: 150%;}
+
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:340px;
+  overflow:auto;  
+  
+}
+#table-wrapper table {
+  width:100%;
+
+}
+
+#table-wrapper table thead th .text {
+  position:absolute;   
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:35%;
+  
+}
+
+div.example {
+
+}
+
+@media screen and (min-width: 601px) {
+  div.example {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  div.example {
+    font-size: 12px;
+  }
+}

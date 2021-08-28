@@ -1,171 +1,436 @@
 {% extends 'vehicle_config/header.html' %}
 {% block content %}
-
 <div class="container-fluid py-2">
-<form method="post">
-    {% csrf_token %}
-    <h1 class="m1">View Setup Paramater</h1>
- 
-
-    <div class="row mt-5">
-        <div class="col col-sm-12 col-lg-3 offset-lg-2"> 
+   <form method="post" autocomplete="off">
+      {% csrf_token %}
+      <h1 class="m1">Setup Paramater: {{ setupParam.name }}</h1>
+      <div class="row mt-4">
+         <div class="col col-8 col-lg-2 offset-lg-2">
             <div class="card">
-                <div class="card-header pb-0"><p>Name</p></div>
-                <div class="card-body py-2">
-                    <p class="card-text"> {{ setupParam.name }}</p>
-                </div> 
-                
-          </div>
-        </div>
-
-        <div class="col col-sm-11 col-lg-3"> 
-            <div class="card">
-                <div class="card-header pb-0"><p>Parent Setup</p></div>
-                <div class="card-body py-2">
-                    <p class="card-text"> {{ parent_setup }}</p>
-                </div>         
-                
-          </div>
-        </div>
-
-        <div class="col col-sm-11 col-lg-2"> 
-            <div class="card">
-                <div class="card-header pb-0"><p>Date Created</p></div>
-                <div class="card-body py-2">
-                    <p class="card-text"> {{ setupParam.date_created }}</p>
-                </div>         
-                
-          </div>
-        </div>
-
-        <div class="col-1"> 
-            
-                <a href="{% url 'edit' obj=obj pk=id %}" class="link-primary"><p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-            </svg></p></a>
-            
-            <a href="{% url 'delete' obj=obj pk=id %}" class="link-primary"><p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg></p></a>
-            
-        </div>
-    </div>
-
-    
-    <div class="row mt-1">
-        <div class="col col-sm-12 col-lg-8 offset-lg-2">
-            <div class="card">
-                <div class="card-header pb-0"><p>Description</p></div>
-                <div class="card-body py-2">
-                    <p class="card-text"> {{ setupParam.description }}</p>
-                </div> 
-                
+               <div class="card-header pb-0">
+                  <p>Value</p>
+               </div>
+               <div class="card-body py-2">
+                  <p class="card-text"> {{ setupParam.value }}</p>
+               </div>
             </div>
-        </div>
-    </div>
-
-
-    <div class="row mt-5 py-0">
-        <div class="col col-sm-12 col-lg-2 offset-lg-2">
-            <div class="input-group input-group mb-3">
-                <span class="input-group-text mws"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                  </svg></span>
-                <input type="text" class="form-control" id="myInput" name="name" onkeyup="myFunction()" placeholder="Search for parts..">
+         </div>
+         <div class="col col-4 col-lg-2">
+            <div class="card">
+               <div class="card-header pb-0">
+                  <p>Units</p>
+               </div>
+               <div class="card-body py-2">
+                  <p class="card-text"> {{ setupParam.units }}</p>
+               </div>
             </div>
-        </div>
-
-        
-     
-        <div class="col offset-lg-1 col-lg-1 col-sm-12">
-            <button type="button" class="btn btn-primary pb-0 float-end"> <a href="{% url 'view' %}" class="link-light"><h6>Add</h6></a></button> 
-        </div>
-
-     
-        <div class="col col-sm-12 col-lg-2">
-            <div class="input-group input-group mb-3">
-                <span class="input-group-text mws"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                    </svg></span>
-                <input type="text" class="form-control" id="myInput2" name="name" onkeyup="myFunction2()" placeholder="Search for assemblies..">
+         </div>
+         <div class="col col-12 col-lg-2">
+            <div class="card">
+               <div class="card-header pb-0">
+                  <p>Parent Setup</p>
+               </div>
+               <div class="card-body py-2">
+                  <a href="{% url 'viewSetup' parent_setup.id %}" class="link-primary">
+                     <p class="card-text"> {{ parent_setup.name }}</p>
+                  </a>
+               </div>
             </div>
-        </div>
-    
-            
-         
-    <div class="col offset-lg-1 col-lg-1 col-sm-12">
-        <button type="button" class="btn btn-primary pb-0 float-end"> <a href="{% url 'view' %}" class="link-light"><h6>Add</h6></a></button> 
-    </div>
+         </div>
+         <div class="col col-10 col-lg-2">
+            <div class="card">
+               <div class="card-header pb-0">
+                  <p>Date Created</p>
+               </div>
+               <div class="card-body py-2">
+                  <p class="card-text"> {{ setupParam.date_created }}</p>
+               </div>
+            </div>
+         </div>
+         <div class="col col-lg-1 col-2">
+            <a href="{% url 'edit' obj=obj pk=id %}" class="link-primary">
+               <p>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                  </svg>
+               </p>
+            </a>
+            <a href="{% url 'delete' obj=obj pk=id %}" class="link-primary">
+               <p>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                  </svg>
+               </p>
+            </a>
+         </div>
+      </div>
+      <div class="row mt-1">
+         <div class="col col-sm-12 col-lg-8 offset-lg-2">
+            <div class="card">
+               <div class="card-header pb-0">
+                  <p>Description</p>
+               </div>
+               <div class="card-body py-2">
+                  <p class="card-text"> {{ setupParam.description }}</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row mt-3">
+         <div class="col col-lg-8 col-sm-12 offset-lg-2">
+            <ul class="nav nav-tabs" id="myTab">
+               <li class="nav-item">
+                   <a href="#sectionA" class="nav-link active" data-toggle="tab"><div class="example">Add Parts</div></a>
+               </li>
+               <li class="nav-item">
+                   <a href="#sectionB" class="nav-link" data-toggle="tab"><div class="example">Add Assemblies</div></a>
+               </li>
+               <li class="nav-item">
+                   <a href="#sectionC" class="nav-link" data-toggle="tab"><div class="example">All Added Objects</div></a>
+               </li>
+           </ul>
+            <div class="tab-content mt-2">
+               <div id="sectionA" class="tab-pane show active">
+                  <div class="row mt-3">
+                     <div class="col col-lg-6 col-12">
+                        <div class="input-group input-group mb-3">
+                           <span class="input-group-text mws">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                              </svg>
+                           </span>
+                           <input type="text" class="form-control" id="search" name="name" placeholder="Search for available parts..">
+                        </div>
+                        <div id="table-wrapper">
+                           <div id="table-scroll">
+                              <table class="table table-bordered table-hover" id="table">
+                                 <thead>
+                                    <tr>
+                                       <th scope="col" style="width: 5%">
+                                          <p>#</p>
+                                       </th>
+                                       <th scope="col" style="width: 90%">
+                                          <p>Available parts from vehicle: {{ vehicle_name }}</p>
+                                       </th>
+                                       <th scope="col" style="width: 5%">
+                                          <p></p>
+                                       </th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {% for part in allParts %}
+                                    <tr>
+                                       <th scope="row">
+                                          <p>{{ forloop.counter }} </p>
+                                       </th>
+                                       <td>
+                                          <a href="{% url 'viewPart' part.id %}" class="link-primary">
+                                             <p>{{ part.name }}</p>
+                                          </a>
+                                       </td>
+                                       <td>
+                                          <a href="{% url 'spPart' setupParam.id part.id add %}" class="link-primary"> 
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                              </svg>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    {% endfor %}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
 
-</div>
-
-
-
-
-
-  
-
-    <div class="row mt-1">
-
-        <div class="col col-sm-12 col-lg-4 offset-lg-2">
-            <table class="table table-bordered table-hover" id="myTable">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width: 5%"><p>#</p></th>  
-                        <th scope="col" style="width: 50%"><p>Parts</p></th>
                         
-                    </tr>
-                </thead>
-                <tbody>     
-                    {% for part in parts %}
-                        <tr>
-                            <th scope="row"> <p>{{ forloop.counter }} </p></th>
-                            <td>
-                                <a href="{% url 'viewPart' part.id %}" class="link-primary"><p>{{ part.name }}</p></a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                
-                </tbody>
-                </table>
+                        
+                     </div>
+                     <div class="col col-lg-6 col-12">
+                        <div class="input-group input-group mb-3">
+                           <span class="input-group-text mws">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                              </svg>
+                           </span>
+                           <input type="text" class="form-control" id="search2" name="name" placeholder="Search for added parts..">
+                        </div>
+
+                        <div id="table-wrapper">
+                           <div id="table-scroll">
+                              <table class="table table-bordered table-hover" id="table2">
+                                 <thead>
+                                    <tr>
+                                       <th scope="col" style="width: 5%">
+                                          <p>#</p>
+                                       </th>
+                                       <th scope="col" style="width: 93%">
+                                          <p>Added Parts</p>
+                                       </th>
+                                       <th scope="col" style="width: 2%">
+                                          <p></p>
+                                       </th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {% for part in parts %}
+                                    <tr>
+                                       <th scope="row">
+                                          <p>{{ forloop.counter }} </p>
+                                       </th>
+                                       <td>
+                                          <a href="{% url 'viewPart' part.id %}" class="link-primary">
+                                             <p>{{ part.name }}</p>
+                                          </a>
+                                       </td>
+                                       <td>
+                                          <a href="{% url 'spPart' setupParam.id part.id rem %}" class="link-danger"> 
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                              </svg>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    {% endfor %}
+                                 </tbody>
+                              </table>   
+                           </div>
+                        </div>
+
+                                            
+                     </div>                     
+                  </div>
+               </div>
+               <div id="sectionB" class="tab-pane show">
+                  <div class="row mt-3">
+                     <div class="col col-lg-6 col-12">
+                        <div class="input-group input-group mb-3">
+                           <span class="input-group-text mws">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                              </svg>
+                           </span>
+                           <input type="text" class="form-control" id="search3" name="name" placeholder="Search for available assemblies..">
+                        </div>
+
+                        <div id="table-wrapper">
+                           <div id="table-scroll">
+                              <table class="table table-bordered table-hover" id="table3">
+                                 <thead>
+                                    <tr>
+                                       <th scope="col" style="width: 5%">
+                                          <p>#</p>
+                                       </th>
+                                       <th scope="col" style="width: 90%">
+                                          <p>Available assemblies from vehicle: {{ vehicle_name }}</p>
+                                       </th>
+                                       <th scope="col" style="width: 5%">
+                                          <p></p>
+                                       </th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {% for assembly in allAssemblies %}
+                                    <tr>
+                                       <th scope="row">
+                                          <p>{{ forloop.counter }} </p>
+                                       </th>
+                                       <td>
+                                          <a href="{% url 'viewAssembly' assembly.id %}" class="link-primary">
+                                             <p>{{ assembly.name }}</p>
+                                          </a>
+                                       </td>
+                                       <td>
+                                          <a href="{% url 'spAssembly' setupParam.id assembly.id add %}" class="link-primary"> 
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                              </svg>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    {% endfor %}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        
+                        
+                     </div>
+                     <div class="col col-lg-6 col-12">
+                        <div class="input-group input-group mb-3">
+                           <span class="input-group-text mws">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                              </svg>
+                           </span>
+                           <input type="text" class="form-control" id="search4" name="name" placeholder="Search for added assemblies..">
+                        </div>
+                        <div id="table-wrapper">
+                           <div id="table-scroll">
+                              <table class="table table-bordered table-hover" id="table4">
+                                 <thead>
+                                    <tr>
+                                       <th scope="col" style="width: 5%">
+                                          <p>#</p>
+                                       </th>
+                                       <th scope="col" style="width: 93%">
+                                          <p>Added Assemblies</p>
+                                       </th>
+                                       <th scope="col" style="width: 2%">
+                                          <p></p>
+                                       </th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {% for assembly in assemblies %}
+                                    <tr>
+                                       <th scope="row">
+                                          <p>{{ forloop.counter }} </p>
+                                       </th>
+                                       <td>
+                                          <a href="{% url 'viewAssembly' assembly.id %}" class="link-primary">
+                                             <p>{{ assembly.name }}</p>
+                                          </a>
+                                       </td>
+                                       <td>
+                                          <a href="{% url 'spAssembly' setupParam.id assembly.id rem %}" class="link-danger"> 
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                              </svg>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    {% endfor %}
+                                 </tbody>
+                              </table>  
+                           </div>
+                        </div>
+
+                                              
+                     </div>                     
+                  </div>
+               </div>
+               <div id="sectionC" class="tab-pane show">
+                  <div class="row mt-3">
+                     
+                     <div class="col col-lg-6 col-12">
+                        <div class="input-group input-group mb-3">
+                           <span class="input-group-text mws">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                              </svg>
+                           </span>
+                           <input type="text" class="form-control" id="search5" name="name" placeholder="Search for added parts..">
+                        </div>
+                        <div id="table-wrapper">
+                           <div id="table-scroll">
+                              <table class="table table-bordered table-hover" id="table5">
+                                 <thead>
+                                    <tr>
+                                       <th scope="col" style="width: 5%">
+                                          <p>#</p>
+                                       </th>
+                                       <th scope="col" style="width: 93%">
+                                          <p>Added Parts</p>
+                                       </th>
+                                       <th scope="col" style="width: 2%">
+                                          <p></p>
+                                       </th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {% for part in parts %}
+                                    <tr>
+                                       <th scope="row">
+                                          <p>{{ forloop.counter }} </p>
+                                       </th>
+                                       <td>
+                                          <a href="{% url 'viewPart' part.id %}" class="link-primary">
+                                             <p>{{ part.name }}</p>
+                                          </a>
+                                       </td>
+                                       <td>
+                                          <a href="{% url 'spPart' setupParam.id part.id rem %}" class="link-danger"> 
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                              </svg>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    {% endfor %}
+                                 </tbody>
+                              </table> 
+                           </div>
+                        </div>
+
+                                               
+                     </div> 
+                     <div class="col col-lg-6 col-12">
+                        <div class="input-group input-group mb-3">
+                           <span class="input-group-text mws">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                              </svg>
+                           </span>
+                           <input type="text" class="form-control" id="search6" name="name" placeholder="Search for added assemblies..">
+                        </div>
+                        <div id="table-wrapper">
+                           <div id="table-scroll">
+                              <table class="table table-bordered table-hover" id="table6">
+                                 <thead>
+                                    <tr>
+                                       <th scope="col" style="width: 5%">
+                                          <p>#</p>
+                                       </th>
+                                       <th scope="col" style="width: 93%">
+                                          <p>Added Assemblies</p>
+                                       </th>
+                                       <th scope="col" style="width: 2%">
+                                          <p></p>
+                                       </th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {% for assembly in assemblies %}
+                                    <tr>
+                                       <th scope="row">
+                                          <p>{{ forloop.counter }} </p>
+                                       </th>
+                                       <td>
+                                          <a href="{% url 'viewAssembly' assembly.id %}" class="link-primary">
+                                             <p>{{ assembly.name }}</p>
+                                          </a>
+                                       </td>
+                                       <td>
+                                          <a href="{% url 'spAssembly' setupParam.id assembly.id rem %}" class="link-danger"> 
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                              </svg>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    {% endfor %}
+                                 </tbody>
+                              </table> 
+
+                           </div>
+                        </div>
+
+                                               
+                     </div>                     
+                  </div>
+               </div>
             </div>
-
-            <div class="col col-sm-12 col-lg-4">
-                <table class="table table-bordered table-hover" id="myTable2">
-                    <thead>
-                        <tr>
-                            <th scope="col" style="width: 5%"><p>#</p></th>  
-                            <th scope="col" style="width: 50%"><p>Assemblies</p></th>
-                    
-                        </tr>
-                    </thead>
-                    <tbody>     
-                        {% for assembly in assemblies %}
-                            <tr>
-                                <th scope="row"> <p>{{ forloop.counter }} </p></th>
-                                <td>
-                                    <a href="{% url 'viewAssembly' sub_assembly.id %}" class="link-primary"><p>{{ assembly.name }}</p></a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    
-                    </tbody>
-                    </table>
-                </div>
-
-
-
-
-
-    </div>
-
+         </div>
+      </div>
 
 </form>
-
-
-
-
 </div>
 {% endblock %}

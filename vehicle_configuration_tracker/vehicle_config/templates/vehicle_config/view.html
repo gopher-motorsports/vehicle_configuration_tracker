@@ -1,6 +1,7 @@
 {% extends 'vehicle_config/header.html' %}
 {% block content %}
 <div class="container-fluid py-2">
+    <form autocomplete="off">
     <div class="row">
         <h1 class="m1">Vehicles</h1>
 
@@ -8,19 +9,22 @@
     </div>
 
     <div class="row mt-4 py-0">
-        <div class="col col-sm-12 col-lg-2 offset-lg-2">
+        <div class="col-9 col-lg-2 offset-lg-2">
             <div class="input-group input-group mb-3">
                 <span class="input-group-text mws"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                   </svg></span>
-                <input type="text" class="form-control" id="myInput" name="name" onkeyup="myFunction()" placeholder="Search for vehicles..">
+                <input type="text" class="form-control" id="search" name="name" placeholder="Search for vehicles..">
             </div>
         </div>
 
         
      
-        <div class="col offset-lg-5 col-lg-1 col-sm-12">
-            <button type="button" class="btn btn-primary pb-0 float-end"> <a href="{% url 'createVehicle' %}" class="link-light"><h6>Add</h6></a></button> 
+        <div class="col offset-lg-5 col-lg-1 col-3">
+            <a href="{% url 'createVehicle' %}" class="link-light">
+            <button type="button" class="btn btn-outline-primary mws btn-lg pb-0 float-end"> 
+              
+                <h6>Add</h6></button> </a>
         </div>
     </div>
 
@@ -29,7 +33,7 @@
     
 
     <div class="column col-sm-12 col-lg-8 offset-lg-2">
-<table class="table table-bordered table-hover" id="myTable">
+<table class="table table-bordered table-hover" id="table">
 <thead>
     <tr>
         <th scope="col" style="width: 5%"><p>#</p></th>  
@@ -60,15 +64,7 @@
 
 
 
-
-
-
-<!-- {% for part in parts %}
-    <a href="{% url 'editPart' pk=part.id %}" class="link-primary"><h1>part - {{ part.id }} {{ part.name }}</h1></a>
-    
-{% endfor %} -->
-
-
+</form>
 
 </div>
   

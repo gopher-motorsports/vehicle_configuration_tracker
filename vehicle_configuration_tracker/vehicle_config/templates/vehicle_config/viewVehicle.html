@@ -2,37 +2,27 @@
 {% block content %}
 
 <div class="container-fluid">
-<form method="post">
+<form method="post" autocomplete="off">
     {% csrf_token %}
 
     <div class="row">
-        <h1 class="m1">View Vehicle</h1>
+        <h1 class="m1">Vehicle: {{ name }}</h1>
     </div>
 
 
-    <div class="row mt-5">
-        <div class="col col-sm-12 col-lg-4 offset-lg-2"> 
-            <div class="card">
-                <div class="card-header pb-0"><p>Name</p></div>
-                <div class="card-body py-2">
-                    <p class="card-text"> {{ name }}</p>
-                </div> 
-                
-          </div>
-        </div>
-
-        <div class="col col-sm-11 col-lg-4"> 
+    <div class="row mt-4">
+        <div class="col col-lg-8 offset-lg-2 col-10"> 
             <div class="card">
                 <div class="card-header pb-0"><p>Date Created</p></div>
                 <div class="card-body py-2">
-                    <p class="card-text"> {{ vehicle.date_created }}</p>
+                    <p class="card-text">{{ vehicle.date_created }}</p>
                 </div> 
-                
                 
           </div>
         </div>
 
-        <div class="col col-lg-1 col-sm-1"> 
+    
+        <div class="col col-lg-1 col-2"> 
             
                 <a href="{% url 'edit' obj=obj pk=id %}" class="link-primary"><p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -48,7 +38,7 @@
     </div>
   
     <div class="row mt-1">
-        <div class="col col-sm-12 col-lg-8 offset-lg-2">
+        <div class="col col-12 col-sm-12 col-lg-8 offset-lg-2">
             <div class="card">
                 <div class="card-header pb-0"><p>Description</p></div>
                 <div class="card-body py-2">
@@ -59,90 +49,95 @@
         </div>
     </div>
 
-  
-        <div class="row mt-5 py-0">
-            <div class="col col-sm-12 col-lg-2 offset-lg-2">
-                <div class="input-group input-group mb-3">
-                    <span class="input-group-text mws"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    <div class="row mt-4">
+       <div class="col col-lg-4 offset-lg-2 col-12">
+          <div class="row">
+             <div class="col col-lg-6 col-10">
+               <div class="input-group input-group mb-3">
+                  <span class="input-group-text mws"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg></span>
+                  <input type="text" class="form-control" id="search" name="name" placeholder="Search for setups..">
+               </div>
+             </div>
+             <div class="col offset-lg-5 col-lg-1 col-2">
+               <a href="{% url 'createSetup' pk=id %}" class="link-light"> <button type="button" class="btn btn-outline-primary mws pb-0 float-end"> <h6>Add</h6></button> </a>
+            </div>
+          </div>
+
+          <div id="table-wrapper">
+            <div id="table-scroll">
+                <table class="table table-bordered table-hover" id="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 8%"><p>#</p></th>
+                            <th scope="col" style="width: 60%"><p>Setups</p></th>
+                        </tr>        
+                    </thead>
+                    <tbody>
+                        {% for setup in setups %}
+                            <tr>
+                                <th scope="row"> <p> {{ forloop.counter }} </p> </th>
+                                 
+                                <td><a href="{% url 'viewSetup' setup.id %}" class="link-primary"><p>{{ setup.name }}</p></a></td>
+                        
+                            </tr>
+                        {% endfor %}
+                    </tbody> 
+                 </table>
+
+            </div>
+          </div>
+          
+
+       </div>
+       <div class="col col-lg-4 col-12">
+          <div class="row">
+             <div class="col col-lg-6 col-10">
+               <div class="input-group input-group mb-3">
+                  <span class="input-group-text mws"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                       </svg></span>
-                    <input type="text" class="form-control" id="myInput" name="name" onkeyup="myFunction()" placeholder="Search for setups..">
-                </div>
-            </div>
-    
-            
-         
-            <div class="col offset-lg-1 col-lg-1 col-sm-12">
-                <button type="button" class="btn btn-primary pb-0 float-end"> <a href="{% url 'createSetup' pk=id %}" class="link-light"><h6>Add</h6></a></button> 
-            </div>
+                  <input type="text" class="form-control" id="search2" name="name" placeholder="Search for assemblies..">
+               </div>
+             </div>
+             <div class="col offset-lg-5 col-lg-1 col-2">
+               <a href="{% url 'createAssembly' pk=id pid=0 %}" class="link-light"><button type="button" class="btn btn-outline-primary mws pb-0 float-end"> <h6>Add</h6></button> </a>
+             </div>
+          </div>
+          <div id="table-wrapper">
+            <div id="table-scroll">
+                <table class="table table-bordered table-hover" id="table2">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 8%"><p>#</p></th>
+                            <th scope="col" style="width: 60%"><p>Assemblies</p></th>
+                            
+                        </tr>        
+                    </thead>
+                    <tbody>
+                        {% for assembly in assemblies %}
+                            <tr>
+                                <th scope="row"> <p> {{ forloop.counter }} </p> </th> 
+                                <td><a href="{% url 'viewAssembly' assembly.id %}" class="link-primary"><p>{{ assembly.name }}</p></a></td>
+                        
+                            </tr>
+                        {% endfor %}
+                    </tbody> 
+                 </table>
 
-         
-            <div class="col col-sm-12 col-lg-2">
-                <div class="input-group input-group mb-3">
-                    <span class="input-group-text mws"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                        </svg></span>
-                    <input type="text" class="form-control" id="myInput2" name="name" onkeyup="myFunction2()" placeholder="Search for assemblies..">
-                </div>
             </div>
-        
-                
-             
-        <div class="col offset-lg-1 col-lg-1 col-sm-12">
-            <button type="button" class="btn btn-primary pb-0 float-end"> <a href="{% url 'createAssembly' pk=id pid=0 %}" class="link-light"><h6>Add</h6></a></button> 
-        </div>
+          </div>
+          
 
+       </div>
     </div>
 
+  
 
-    <div class="row mt-1">
-    
-        <div class="col col-sm-12 col-lg-4 offset-lg-2">
-            <table class="table table-bordered table-hover" id="myTable">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width: 8%"><p>#</p></th>
-                        <th scope="col" style="width: 60%"><p>Setups</p></th>
-                        
-                        
-                    </tr>        
-                </thead>
-                <tbody>
-                    {% for setup in setups %}
-                        <tr>
-                            <th scope="row"> <p> {{ forloop.counter }} </p> </th>
-                             
-                            <td><a href="{% url 'viewSetup' setup.id %}" class="link-primary"><p>{{ setup.name }}</p></a></td>
-                    
-                        </tr>
-                    {% endfor %}
-                </tbody> 
-            </table>
-        </div>
+  
 
-        <div class="col col-sm-12 col-lg-4">
-            <table class="table table-bordered table-hover" id="myTable2">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width: 8%"><p>#</p></th>
-                        <th scope="col" style="width: 60%"><p>Assemblies</p></th>
-                        
-                    </tr>        
-                </thead>
-                <tbody>
-                    {% for assembly in assemblies %}
-                        <tr>
-                            <th scope="row"> <p> {{ forloop.counter }} </p> </th> 
-                            <td><a href="{% url 'viewAssembly' assembly.id %}" class="link-primary"><p>{{ assembly.name }}</p></a></td>
-                    
-                        </tr>
-                    {% endfor %}
-                </tbody> 
-            </table>
-        </div>
-
-    </div>
-
+  
     
 
 </form>

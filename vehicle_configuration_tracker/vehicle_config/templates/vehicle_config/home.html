@@ -2,23 +2,35 @@
 {% block content %}
 
 {% load static %}
-<!-- <div class="container-fluid">
-    <div class="background_image">
-        <img src="{% static "images/f1_car.jpg" %}" class="img-fluid" />
-    </div>
-<h1>Homeeeeeeeeeee</h1>
-</div> -->
-<div class="container-fluid">
-<style type="text/css">
-    body {
-      background-image: url({% static "images/f1_car.jpg" %});
-      background-size: cover;
-    }
-    </style>
-    
-    <div class="d-flex justify-content-center align-items-center align-middle h-100">
-        <h1 style="color:#fff; font-size: 50px; padding-top: 20%;">Vehicle Configuration Tracker</h1>
 
+
+
+
+    <div class="bg-image">
+        <style type="text/css">
+            body {
+                background-image: url({% static "images/f1_car.jpg" %}); 
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                
+            }
+            </style>
+
+    </div>
+    
+
+    <div class="bg-text">
+        <h1>Vehicle Configuration Tracker</h1>
+        <a href="{% url 'view' %}" class="link-light">
+        <button type="button" class="btn btn-outline-light pb-0">
+        <h4><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+            <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+          </svg> View Vehicles
+          </h4>
+        </button>
+        </a>
     </div>
 
 

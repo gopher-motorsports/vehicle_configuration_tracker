@@ -36,7 +36,7 @@ class Assembly(SafeDeleteModel, models.Model):
     parent_vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, null=True, blank=False) ## one to many
 
     # parts = models.ManyToManyField('Part', blank=True)
-    assemblies = models.ManyToManyField("self", symmetrical=False)
+    assemblies = models.ManyToManyField("self", symmetrical=False, related_name='parentAssembly')
     #is subassembly bool
     isSubassembly = models.BooleanField()
     
@@ -63,6 +63,7 @@ class Part(SafeDeleteModel, models.Model):
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
     parent_assembly = models.ForeignKey(Assembly, on_delete=models.CASCADE, null=True, blank=False) #one to many, parent_assembly required as null=false by default
+    part_number = models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return self.name
@@ -81,6 +82,7 @@ class SetupParam(SafeDeleteModel, models.Model):
     assemblies = models.ManyToManyField('Assembly', blank=True) # ??
 
     value = models.FloatField()
+    units = models.CharField(max_length=100, null=True)
     parent_setup = models.ForeignKey(Setup, on_delete=models.CASCADE, null=True, blank=False) #one to many
 
 
