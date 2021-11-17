@@ -18,25 +18,26 @@
                     </div>
                 </div>
                 {% if isPart %}
-                    <div class="col col-lg-8 col-12">
+                    <div class="col col-lg-8 col-12 offset-lg-2">
                         <div class="input-group input-group-lg mb-3">
                             <span class="input-group-text mwgg">Part Number</span>
                             <input type="text" class="form-control" name="part_number" value= "{{ actual_obj.part_number }}">
                         </div>
                     </div>
                 {% elif isSetupParam %}
-                    <div class="col-xl">
+                    <div class="col col-lg-4 offset-lg-2 col-12">
                         <div class="input-group input-group-lg mb-3">
                             <span class="input-group-text mwgg">Value</span>
                             <input type="text" class="form-control" name="value" value= "{{ actual_obj.value }}">
                         </div>
                     </div>
-                    <div class="col-xl">
+                    <div class="col col-lg-4 col-12">
                         <div class="input-group input-group-lg mb-3">
                             <span class="input-group-text mwgg">Units</span>
                             <label for="units" class="form-label"></label>
                             <input list="datalistOptions" type="text" class="form-control" id="units" name="units" value= "{{ actual_obj.units }}">
                             <datalist id="datalistOptions">
+                                
                                 <option value="cm">
                                 <option value="m">
                                 <option value="mm">
@@ -48,6 +49,7 @@
                                 <option value="KW"> 
                                 <option value="N">
                                 <option value="&deg; C">
+                                <option value="deg">
                                 <option value="V">
                                 <option value="A">
                                 <option value="%">

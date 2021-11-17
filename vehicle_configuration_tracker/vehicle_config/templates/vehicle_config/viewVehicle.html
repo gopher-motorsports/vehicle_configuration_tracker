@@ -71,14 +71,14 @@
                     <thead>
                         <tr>
                             <th scope="col" style="width: 8%"><p>#</p></th>
-                            <th scope="col" style="width: 60%"><p>Setups</p></th>
+                            <th scope="col" style="width: 60%"><p>Date: WHEN AT TRACK</p></th>
                         </tr>        
                     </thead>
                     <tbody>
                         {% for setup in setups %}
                             <tr>
                                 <th scope="row"> <p> {{ forloop.counter }} </p> </th>
-                                 
+
                                 <td><a href="{% url 'viewSetup' setup.id %}" class="link-primary"><p>{{ setup.name }}</p></a></td>
                         
                             </tr>
@@ -111,7 +111,7 @@
                     <thead>
                         <tr>
                             <th scope="col" style="width: 8%"><p>#</p></th>
-                            <th scope="col" style="width: 60%"><p>Assemblies</p></th>
+                            <th scope="col" style="width: 60%"><p>Assemblies: ADD BEFORE DRIVING</p></th>
                             
                         </tr>        
                     </thead>
