@@ -63,6 +63,7 @@ span {
 .mwd{ background-color:#800000; color:#fff; width:175px; display: inline-block; line-height: 250px; }
 
 .m1 { text-align:center; color:#800000 }
+.m2 { text-align:left; color:#800000 }
 
 .input-append .btn.dropdown-toggle {
   float: none;

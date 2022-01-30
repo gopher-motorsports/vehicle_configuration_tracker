@@ -1,5 +1,12 @@
 from django.shortcuts import render, redirect
 from datetime import datetime
+
+## errors out?? 
+#from vehicle_configuration_tracker.vehicle_config.apps import VehicleConfigConfig
+
+
+
+
 from .models import Vehicle, Setup, Part, Assembly, SetupParam
 import json
 from django.core import serializers
@@ -81,6 +88,19 @@ def viewVehicle(request, pk):
     }
     return render(request, 'vehicle_config/viewVehicle.html', context)
 
+# def viewSetup(request, pk):
+#     setup = get_object_or_404(Setup, id=pk)
+#     obj = "Setup"
+#     setup_params = setup.setupparam_set.all().order_by('-date_created')
+#     if request.method == 'POST':
+#         context = {'id': setup.id, 'setup':setup, 'obj':obj, 'setup_params':setup_params}
+#         return render(request, 'vehicle_config/viewSetup.html', context)
+    
+    
+#     context = {'id': setup.id, 'setup':setup, 'obj':obj, 'setup_params':setup_params}
+#     return render(request, 'vehicle_config/viewSetup.html', context)
+
+
 def viewSetup(request, pk):
     setup = get_object_or_404(Setup, id=pk)
     obj = "Setup"
@@ -140,6 +160,11 @@ def viewPart(request, pk):
     
     context = {'id': part.id, 'name':part.name, 'obj':obj, 'part':part, 'parent_assembly':parent_assembly, 'setupParams':setupParams, 'spex':spex}
     return render(request, 'vehicle_config/viewPart.html', context)
+
+def formTest(request, pk):
+    setup = get_object_or_404(Setup, id=pk)
+    context = {'id:', setup.id}
+    return render(request, 'vehicle_config/formTest.html', context)
 
 def viewSetupParam(request, pk):
     setupParam = get_object_or_404(SetupParam, id=pk)
