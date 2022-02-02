@@ -324,7 +324,7 @@ def delete(request, obj, pk):
             
 
 
-    context = {'id': actual_obj.id, 'name': actual_obj.name, 'description': actual_obj.description, 'obj':obj}
+    context = {'id': actual_obj.id, 'name': actual_obj.name, 'obj':obj}
     return render(request, 'vehicle_config/delete.html', context)
 
         
@@ -333,9 +333,18 @@ def delete(request, obj, pk):
 def createSetup(request, pk):
     parent_vehicle = get_object_or_404(Vehicle, id=pk)
     if request.method == 'POST':
-        name = request.POST['name']
-        description = request.POST['description']
-        Setup.objects.create(name=name, description=description, parent_vehicle=parent_vehicle)
+        event_name = request.POST['event-name']
+        driver_name = request.POST['driver-name']
+        track = request.POST['track']
+        #date = request.POST['date']
+        ambient_temp = request.POST['ambient-temp']
+        track_temp = request.POST['track-temp']
+
+        curSetup = Setup.objects.create(name=event_name, driver_name=driver_name, track=track, ambient_temp=ambient_temp, track_temp=track_temp, parent_vehicle=parent_vehicle)
+        curSetup.save()
+        #SetupParam.objects.create(name=name, description=description, parent_setup=parent_setup, value=value, units=units)
+        
+        
         return redirect('viewVehicle', pk=pk)
 
     context = {'parent_vehicle':parent_vehicle}

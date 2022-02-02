@@ -47,8 +47,18 @@ class Assembly(SafeDeleteModel, models.Model):
 
 class Setup(SafeDeleteModel, models.Model):
     _safedelete_policy = SOFT_DELETE_CASCADE
-    name = models.CharField(max_length=100)
-    description = models.TextField()
+    driver_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100) #event_name
+    track = models.CharField(max_length=100)
+    #team_notes = models.TextField()
+    # track_info = models.TextField()
+    # driver_feedback = models.TextField()
+
+
+    ambient_temp = models.FloatField(max_length=100)
+    track_temp = models.FloatField(max_length=100)
+
+
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
     parent_vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, null=True, blank=False) #one to many

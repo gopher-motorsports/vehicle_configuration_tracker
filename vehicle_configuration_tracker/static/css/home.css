@@ -2,6 +2,7 @@
 body{ padding-top: 70px; }
 
 body, html {
+  overflow-x: hidden;
   height: 100%;
 }
 
@@ -62,8 +63,14 @@ span {
 
 .mwd{ background-color:#800000; color:#fff; width:175px; display: inline-block; line-height: 250px; }
 
+.mt-6 {
+  margin-top: 110px !important;
+}
+
 .m1 { text-align:center; color:#800000 }
 .m2 { text-align:left; color:#800000 }
+.m3 { text-align:right; color:#800000 }
+.bl1 { text-align:center; color:#000000 }
 
 .input-append .btn.dropdown-toggle {
   float: none;

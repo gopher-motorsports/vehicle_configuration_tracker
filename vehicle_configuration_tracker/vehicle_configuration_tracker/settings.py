@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # apps added
-    'vehicle_config.apps.VehicleConfigConfig',
+    'vehicle_config',
+    #'vehicle_config.apps.VehicleConfigConfig',
     'multiselectfield',
     'safedelete',
     
@@ -95,9 +96,9 @@ WSGI_APPLICATION = 'vehicle_configuration_tracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vehicle_config',
+        'NAME': 'vehicle_config_db',
         'USER': 'postgres',
-        'PASSWORD': '*thisistemppostgres*',
+        'PASSWORD': 'pgAdminPassword',
         'HOST': 'localhost',
         'PORT': '5432',
     }
