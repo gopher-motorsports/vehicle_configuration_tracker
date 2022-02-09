@@ -340,6 +340,67 @@ def createSetup(request, pk):
         ambient_temp = request.POST['ambient-temp']
         track_temp = request.POST['track-temp']
 
+        # Front, Left Side
+        cold_pressure_fl = request.POST['cold-pressure-fl']
+        hot_pressure_fl = request.POST['hot-pressure-fl']
+        camber_fl = request.POST['camber-fl']
+        toe_fl = request.POST['toe-fl']
+        ls_compression_fl = request.POST['ls-compression-fl']
+        hs_compression_fl = request.POST['hs-compression-fl']
+        hs_rebound_fl = request.POST['hs-rebound-fl']
+
+        # Front, Right Side
+        cold_pressure_fr = request.POST['cold-pressure-fr']
+        hot_pressure_fr = request.POST['hot-pressure-fr']
+        camber_fr = request.POST['camber-fr']
+        toe_fr = request.POST['toe-fr']
+        ls_compression_fr = request.POST['ls-compression-fr']
+        hs_compression_fr = request.POST['hs-compression-fr']
+        hs_rebound_fr = request.POST['hs-rebound-fr']
+
+        # Front, Center
+        ride_height_f = request.POST['ride-height-f']
+        wing_f = request.POST['wing-f']
+        spring_rate_f = request.POST['spring-rate-f']
+        arb_setting_f = request.POST['arb-setting-f']
+
+        # Back, Left Side
+        cold_pressure_bl = request.POST['cold-pressure-bl']
+        hot_pressure_bl = request.POST['hot-pressure-bl']
+        camber_bl = request.POST['camber-bl']
+        toe_bl = request.POST['toe-bl']
+        ls_compression_bl = request.POST['ls-compression-bl']
+        hs_compression_bl = request.POST['hs-compression-bl']
+        hs_rebound_bl = request.POST['hs-rebound-bl']
+
+        # Back, Right Side
+        cold_pressure_br = request.POST['cold-pressure-br']
+        hot_pressure_br = request.POST['hot-pressure-br']
+        camber_br = request.POST['camber-br']
+        toe_br = request.POST['toe-br']
+        ls_compression_br = request.POST['ls-compression-br']
+        hs_compression_br = request.POST['hs-compression-br']
+        hs_rebound_br = request.POST['hs-rebound-br']
+
+        # Back, Center
+        ride_height_b = request.POST['ride-height-b']
+        wing_b = request.POST['wing-b']
+        spring_rate_b = request.POST['spring-rate-b']
+        arb_setting_b = request.POST['arb-setting-b']
+
+        # Adj Info for Shocks
+        shoc_info = request.POST['shock-info']
+        
+        # Team Notes / Track Info
+        team_notes = request.POST['team-notes']
+        track_info = request.POST['track-info']
+
+        # Driver Feedback
+        driver_feedback = request.POST['driver-feedback']
+
+
+
+
         curSetup = Setup.objects.create(name=event_name, driver_name=driver_name, track=track, ambient_temp=ambient_temp, track_temp=track_temp, parent_vehicle=parent_vehicle)
         curSetup.save()
         #SetupParam.objects.create(name=name, description=description, parent_setup=parent_setup, value=value, units=units)
