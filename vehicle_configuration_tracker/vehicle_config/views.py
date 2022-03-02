@@ -333,6 +333,8 @@ def delete(request, obj, pk):
 def createSetup(request, pk):
     parent_vehicle = get_object_or_404(Vehicle, id=pk)
     if request.method == 'POST':
+
+        # General Information
         event_name = request.POST['event-name']
         driver_name = request.POST['driver-name']
         track = request.POST['track']
@@ -389,7 +391,7 @@ def createSetup(request, pk):
         arb_setting_b = request.POST['arb-setting-b']
 
         # Adj Info for Shocks
-        shoc_info = request.POST['shock-info']
+        shock_info = request.POST['shock-info']
         
         # Team Notes / Track Info
         team_notes = request.POST['team-notes']
@@ -398,14 +400,76 @@ def createSetup(request, pk):
         # Driver Feedback
         driver_feedback = request.POST['driver-feedback']
 
-
-
-
+        # Create Setup Object
         curSetup = Setup.objects.create(name=event_name, driver_name=driver_name, track=track, ambient_temp=ambient_temp, track_temp=track_temp, parent_vehicle=parent_vehicle)
         curSetup.save()
-        #SetupParam.objects.create(name=name, description=description, parent_setup=parent_setup, value=value, units=units)
+
+        # General Information Setup Parameters
+        SetupParam.objects.create(value=event_name, name="Event Name", parent_setup=curSetup)
+        SetupParam.objects.create(value=driver_name, name="Driver Name", parent_setup=curSetup)
+        SetupParam.objects.create(value=track, name="Track", parent_setup=curSetup)
+        SetupParam.objects.create(value=ambient_temp, units="farenheit", name="Ambient Temperature", parent_setup=curSetup)
+        SetupParam.objects.create(value=track_temp, units="farenheit", name="Track Temperature", parent_setup=curSetup)
+        
+        # Front, Left Side SetupParam Object Creation
+        SetupParam.objects.create(value=cold_pressure_fl, units="psi", name="Cold Pressure - Front Left Tire", parent_setup=curSetup)
+        SetupParam.objects.create(value=hot_pressure_fl, units="psi", name="Hot Pressure - Front Left Tire", parent_setup=curSetup)
+        SetupParam.objects.create(value=camber_fl, units="deg", name="Camber - Front Left", parent_setup=curSetup)
+        SetupParam.objects.create(value=toe_fl, units="deg", name="Toe - Front Left", parent_setup=curSetup)
+        SetupParam.objects.create(value=ls_compression_fl, name="LS Compression - Front Left", parent_setup=curSetup)
+        SetupParam.objects.create(value=hs_compression_fl, name="HS Compression - Front Left", parent_setup=curSetup)
+        SetupParam.objects.create(value=hs_rebound_fl, name="HS Rebound - Front Left", parent_setup=curSetup)
+
+        # Front, Right Side SetupParam Object Creation
+        SetupParam.objects.create(value=cold_pressure_fr, units="psi", name="Cold Pressure - Front Right Tire", parent_setup=curSetup)
+        SetupParam.objects.create(value=hot_pressure_fr, units="psi", name="Hot Pressure - Front Right Tire", parent_setup=curSetup)
+        SetupParam.objects.create(value=camber_fr, units="deg", name="Camber - Front Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=toe_fr, units="deg", name="Toe - Front Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=ls_compression_fr, name="LS Compression - Front Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=hs_compression_fr, name="HS Compression - Front Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=hs_rebound_fr, name="HS Rebound - Front Right", parent_setup=curSetup)
+
+        # Front, Center Object Creation
+        SetupParam.objects.create(value=ride_height_f, name="Ride Height - Front", parent_setup=curSetup)
+        SetupParam.objects.create(value=wing_f, name="Wing - Front", parent_setup=curSetup)
+        SetupParam.objects.create(value=spring_rate_f, name="Spring Rate - Front", parent_setup=curSetup)
+        SetupParam.objects.create(value=arb_setting_f, name="ARB Setting - Front", parent_setup=curSetup)
+        
+        # Back, Left Side SetupParam Object Creation
+        SetupParam.objects.create(value=cold_pressure_bl, units="psi", name="Cold Pressure - Back Left Tire", parent_setup=curSetup)
+        SetupParam.objects.create(value=hot_pressure_bl, units="psi", name="Hot Pressure - Back Left Tire", parent_setup=curSetup)
+        SetupParam.objects.create(value=camber_bl, units="deg", name="Camber - Back Left", parent_setup=curSetup)
+        SetupParam.objects.create(value=toe_bl, units="deg", name="Toe - Back Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=ls_compression_bl, name="LS Compression - Back Left", parent_setup=curSetup)
+        SetupParam.objects.create(value=hs_compression_bl, name="HS Compression - Back Left", parent_setup=curSetup)
+        SetupParam.objects.create(value=hs_rebound_bl, name="HS Rebound - Back Left", parent_setup=curSetup)
         
         
+        # Back, Right Side SetupParam Object Creation
+        SetupParam.objects.create(value=cold_pressure_br, units="psi", name="Cold Pressure - Back Right Tire", parent_setup=curSetup)
+        SetupParam.objects.create(value=hot_pressure_br, units="psi", name="Hot Pressure - Back Right Tire", parent_setup=curSetup)
+        SetupParam.objects.create(value=camber_br, units="deg", name="Camber - Back Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=toe_br, units="deg", name="Toe - Back Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=ls_compression_br, name="LS Compression - Back Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=hs_compression_br, name="HS Compression - Back Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=hs_rebound_br, name="HS Rebound - Back Right", parent_setup=curSetup)
+        
+        # Back, Center Object Creation
+        SetupParam.objects.create(value=ride_height_b, name="Ride Height - Back", parent_setup=curSetup)
+        SetupParam.objects.create(value=wing_b, name="Wing - Back", parent_setup=curSetup)
+        SetupParam.objects.create(value=spring_rate_b, name="Spring Rate - Back", parent_setup=curSetup)
+        SetupParam.objects.create(value=arb_setting_b, name="ARB Setting - Back", parent_setup=curSetup)
+
+        # Shocks Info Object
+        SetupParam.objects.create(description=shock_info, name="Shocks Information", parent_setup=curSetup)
+        
+        # Team Notes / Track Info Objs
+        SetupParam.objects.create(description=team_notes, name="Team Notes", parent_setup=curSetup)
+        SetupParam.objects.create(description=track_info, name="Track Information", parent_setup=curSetup)
+
+        # Driver Feedback Obj
+        SetupParam.objects.create(description=driver_feedback, name="Driver Feedback", parent_setup=curSetup)
+
         return redirect('viewVehicle', pk=pk)
 
     context = {'parent_vehicle':parent_vehicle}
@@ -468,6 +532,8 @@ def createPart(request, pk):
 
     context = {'parent_assembly':parent_assembly}
     return render(request, 'vehicle_config/createPart.html', context)
+
+
 
 def createSetupParam(request, pk):
     parent_setup = get_object_or_404(Setup, id=pk)

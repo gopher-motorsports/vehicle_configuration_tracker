@@ -30,7 +30,7 @@ class Vehicle(SafeDeleteModel, models.Model):
 class Assembly(SafeDeleteModel, models.Model):
     _safedelete_policy = SOFT_DELETE_CASCADE
     name = models.CharField(max_length=100) 
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
     parent_vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, null=True, blank=False) ## one to many
@@ -47,18 +47,8 @@ class Assembly(SafeDeleteModel, models.Model):
 
 class Setup(SafeDeleteModel, models.Model):
     _safedelete_policy = SOFT_DELETE_CASCADE
-    driver_name = models.CharField(max_length=100)
     name = models.CharField(max_length=100) #event_name
-    track = models.CharField(max_length=100)
-    #team_notes = models.TextField()
-    # track_info = models.TextField()
-    # driver_feedback = models.TextField()
-
-
-    ambient_temp = models.FloatField(max_length=100)
-    track_temp = models.FloatField(max_length=100)
-
-
+    description = models.TextField(null=True, blank=True)
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
     parent_vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, null=True, blank=False) #one to many
@@ -69,7 +59,7 @@ class Setup(SafeDeleteModel, models.Model):
 class Part(SafeDeleteModel, models.Model):
     _safedelete_policy = SOFT_DELETE_CASCADE
     name = models.CharField(max_length=100) 
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
     parent_assembly = models.ForeignKey(Assembly, on_delete=models.CASCADE, null=True, blank=False) #one to many, parent_assembly required as null=false by default
@@ -83,16 +73,17 @@ class Part(SafeDeleteModel, models.Model):
 
 class SetupParam(SafeDeleteModel, models.Model):
     _safedelete_policy = SOFT_DELETE_CASCADE
-    name = models.CharField(max_length=100) 
-    description = models.TextField()
+    name = models.CharField(max_length=100)
+
+    description = models.TextField(blank=True)
     date_modifed = models.DateTimeField(auto_now_add=True)
     date_created = models.DateTimeField(default=datetime.now)
 
     parts = models.ManyToManyField('Part', blank=True) # ??
     assemblies = models.ManyToManyField('Assembly', blank=True) # ??
 
-    value = models.FloatField()
-    units = models.CharField(max_length=100, null=True)
+    value = models.CharField(max_length=100, blank=True, null=True)
+    units = models.CharField(max_length=100, blank=True, null=True)
     parent_setup = models.ForeignKey(Setup, on_delete=models.CASCADE, null=True, blank=False) #one to many
 
 
