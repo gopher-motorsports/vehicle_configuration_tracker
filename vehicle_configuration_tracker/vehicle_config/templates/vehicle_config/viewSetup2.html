@@ -1,0 +1,508 @@
+{% extends 'vehicle_config/header.html' %}
+{% block content %}
+<div class="container-fluid py-2">
+<form method="post" autocomplete="off">
+  <h1 class="m1">Create Setup</h1>
+  {% csrf_token %}
+  <div class="row mt-4">
+    <div class="col col-lg-8 offset-lg-2 col-12"> 
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              General
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+      
+              <div class="row">
+                <div class="col col-lg-4 col-12">
+                    <div class="input-group input-group mb-3">
+                        <span class="input-group-text mwgg">Vehicle</span>
+                        <input type="text" class="form-control" aria-label="Disabled input example" disabled readonly>
+                    </div>
+                </div>
+                  <div class="col col-lg-4 col-12">
+                    <div class="input-group input-group mb-3">
+                      <span class="input-group-text mwgg">Driver Name</span>
+                      <input type="text" class="form-control" id="driver-name" name="driver-name" value="{{ driver_name }}" required>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4 col-12">
+                    <div class="input-group input-group mb-3">
+                      <span class="input-group-text mwgg">Event Name</span>
+                      <input type="text" class="form-control" id="event-name" name="event-name" value="{{ event_name }}" required>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="row">
+              <div class="col col-lg-4 col-12">
+                <div class="input-group input-group mb-3">
+                  <span class="input-group-text mwgg">Track</span>
+                  <input type="text" class="form-control" id="track" name="track" value="{{ track }}" required>
+                </div>
+              </div>
+                <div class="col col-lg-4 col-12">
+                  <div class="input-group input-group mb-3">
+                    <span class="input-group-text mwgg">Ambient Temperature</span>
+                    <input type="text" class="form-control" id="ambient-temp" name="ambient-temp" value="{{ ambient_temp }}" required>
+                    <span class="input-group-text">&deg;F</span>
+                  </div>
+                </div>
+                <div class="col col-lg-4 col-12">
+                  <div class="input-group input-group mb-3">
+                    <span class="input-group-text mwgg">Track Temperature</span>
+                    <input type="text" class="form-control" id="track-temp" name="track-temp" value="{{ track_temp }}" required>
+                    <span class="input-group-text">&deg;F</span>
+                  </div>
+              </div>
+          </div>
+      
+      
+      
+
+      
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Front Suspension
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+
+
+                  <div class="col col-lg-4 col-6 order-lg-1">
+                    <div class="row"><h5 class="bl1">Left Side</h5></div>
+                    <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Cold Pressure</span>
+                          <input type="text" class="form-control" id="cold-pressure-fl" name="cold-pressure-fl">
+                          <span class="input-group-text">psi</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Hot Pressure</span>
+                          <input type="text" class="form-control" id="hot-pressure-fl" name="hot-pressure-fl">
+                          <span class="input-group-text">psi</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Camber</span>
+                          <input type="text" class="form-control" id="camber-fl" name="camber-fl">
+                          <span class="input-group-text">deg</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Toe</span>
+                          <input type="text" class="form-control" id="toe-fl" name="toe-fl">
+                          <span class="input-group-text">deg</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">LS Compression</span>
+                          <input type="text" class="form-control" id="ls-compression-fl" name="ls-compression-fl">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">HS Compression</span>
+                          <input type="text" class="form-control" id="hs-compression-fl" name="hs-compression-fl">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">HS Rebound</span>
+                          <input type="text" class="form-control" id="hs-rebound-fl" name="hs-rebound-fl">
+                        </div>
+                      </div>
+
+                  </div>
+
+                  <div class="col col-lg-4 col-6 order-lg-3">
+                    <div class="row"><h5 class="bl1">Right Side</h5></div>
+                    <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Cold Pressure</span>
+                          <input type="text" class="form-control" id="cold-pressure-fr" name="cold-pressure-fr">
+                          <span class="input-group-text">psi</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Hot Pressure</span>
+                          <input type="text" class="form-control" id="hot-pressure-fr" name="hot-pressure-fr">
+                          <span class="input-group-text">psi</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Camber</span>
+                          <input type="text" class="form-control" id="camber-fr" name="camber-fr">
+                          <span class="input-group-text">deg</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Toe</span>
+                          <input type="text" class="form-control" id="toe-fr" name="toe-fr">
+                          <span class="input-group-text">deg</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">LS Compression</span>
+                          <input type="text" class="form-control" id="ls-compression-fr" name="ls-compression-fr">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">HS Compression</span>
+                          <input type="text" class="form-control" id="hs-compression-fr" name="hs-compression-fr">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">HS Rebound</span>
+                          <input type="text" class="form-control" id="hs-rebound-fr" name="hs-rebound-fr">
+                        </div>
+                      </div>
+  
+                  </div>
+      
+                  
+                  <div class="col col-lg-4 col-6 order-lg-2">
+                    <div class="row mt-6 mb-md-0">
+                  
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Ride Height</span>
+                          <input type="text" class="form-control" id="ride-height-f" name="ride-height-f">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Wing</span>
+                          <input type="text" class="form-control" id="wing-f" name="wing-f">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text mwgg">Spring Rate</span>
+                          <input type="text" class="form-control" id="spring-rate-f" name="spring-rate-f">
+                        </div>
+                      </div>
+
+                      <div class="row mb-0 pb-0">
+                        <div class="input-group input-group-sm mb-0">
+                          <span class="input-group-text mwgg">ARB Setting</span>
+                          
+                          <input type="range" class="form-range mt-2 mb-0 pb-0" min="0" max="5" id="arb-setting-f" name="arb-setting-f">
+                          
+
+                        </div>
+                      </div>
+                      <div class="row mt-0 pt-0">
+                        <div class="col">
+                          <div class="float-start">Soft</div>
+
+                        </div>
+                        <div class="col">
+                          <div class="float-end">Stiff</div>
+
+                        </div>
+                        
+                      </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          </div>
+
+   
+    
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Rear Suspension
+            </button>
+          </h2>
+
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              
+
+              <div class="row">
+
+
+                <div class="col col-lg-4 col-6 order-lg-1">
+                  <div class="row"><h5 class="bl1">Left Side</h5></div>
+                  <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Cold Pressure</span>
+                        <input type="text" class="form-control" id="cold-pressure-bl" name="cold-pressure-bl">
+                        <span class="input-group-text">psi</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Hot Pressure</span>
+                        <input type="text" class="form-control" id="hot-pressure-bl" name="hot-pressure-bl">
+                        <span class="input-group-text">psi</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Camber</span>
+                        <input type="text" class="form-control" id="camber-bl" name="camber-bl">
+                        <span class="input-group-text">deg</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Toe</span>
+                        <input type="text" class="form-control" id="toe-bl" name="toe-bl">
+                        <span class="input-group-text">deg</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">LS Compression</span>
+                        <input type="text" class="form-control" id="ls-compression-bl" name="ls-compression-bl">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">HS Compression</span>
+                        <input type="text" class="form-control" id="hs-compression-bl" name="hs-compression-bl">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">HS Rebound</span>
+                        <input type="text" class="form-control" id="hs-rebound-bl" name="hs-rebound-bl">
+                      </div>
+                    </div>
+
+                </div>
+
+                <div class="col col-lg-4 col-6 order-lg-3">
+                  <div class="row"><h5 class="bl1">Right Side</h5></div>
+                  <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Cold Pressure</span>
+                        <input type="text" class="form-control" id="cold-pressure-br" name="cold-pressure-br">
+                        <span class="input-group-text">psi</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Hot Pressure</span>
+                        <input type="text" class="form-control" id="hot-pressure-br" name="hot-pressure-br">
+                        <span class="input-group-text">psi</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Camber</span>
+                        <input type="text" class="form-control" id="camber-br" name="camber-br">
+                        <span class="input-group-text">deg</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Toe</span>
+                        <input type="text" class="form-control" id="toe-br" name="toe-br">
+                        <span class="input-group-text">deg</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">LS Compression</span>
+                        <input type="text" class="form-control" id="ls-compression-br" name="ls-compression-br">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">HS Compression</span>
+                        <input type="text" class="form-control" id="hs-compression-br" name="hs-compression-br">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">HS Rebound</span>
+                        <input type="text" class="form-control" id="hs-rebound-br" name="hs-rebound-br">
+                      </div>
+                    </div>
+
+                </div>
+    
+                
+                <div class="col col-lg-4 col-6 order-lg-2">
+                  <div class="row mt-6 mb-md-0">
+                
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Ride Height</span>
+                        <input type="text" class="form-control" id="ride-height-b" name="ride-height-b">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Wing</span>
+                        <input type="text" class="form-control" id="wing-b" name="wing-b">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text mwgg">Spring Rate</span>
+                        <input type="text" class="form-control" id="spring-rate-b" name="spring-rate-b">
+                      </div>
+                    </div>
+
+                    <div class="row mb-0 pb-0">
+                      <div class="input-group input-group-sm mb-0">
+                        <span class="input-group-text mwgg">ARB Setting</span>
+                        
+                        <input type="range" class="form-range mt-2 mb-0 pb-0" min="0" max="5" id="arb-setting-b" name="arb-setting-b">
+                        
+
+                      </div>
+                    </div>
+                    <div class="row mt-0 pt-0">
+                      <div class="col">
+                        <div class="float-start">Soft</div>
+
+                      </div>
+                      <div class="col">
+                        <div class="float-end">Stiff</div>
+
+                      </div>
+                      
+                    </div>
+              </div>
+
+
+            </div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingfour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Shocks
+            </button>
+          </h2>
+          
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+
+              <div class="row">
+                
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text mwgg">Adjusting Information For Shocks</span>
+                        <textarea class="form-control" aria-label="With textarea" id="shock-info" name="shock-info"></textarea>
+                    </div>
+                
+            </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              Team Notes / Track Information
+            </button>
+          </h2>
+          
+          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+
+              <div class="row">
+                  <div class = "col col-lg-6 col-12">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text mwgg">Team Notes</span>
+                        <textarea class="form-control" aria-label="With textarea" id="team-notes" name="team-notes"></textarea>
+                    </div>
+                  </div>
+                  <div class = "col col-lg-6 col-12">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text mwgg">Track Information</span>
+                        <textarea class="form-control" aria-label="With textarea" id="track-info" name="track-info"></textarea>
+                    </div>
+                  </div>
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              Driver Feedback
+            </button>
+          </h2>
+          
+          <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+
+              <div class="row">
+                
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text mwgg">Driver Feedback</span>
+                        <textarea class="form-control" aria-label="With textarea" id="driver-feedback" name="driver-feedback"></textarea>
+                    </div>
+                
+            </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+<div class="row">
+  <div class="col mt-2 py-0 col-lg-8 offset-lg-2 col-10"> 
+      <input class="btn btn-outline-primary mws" type="submit" value="Submit">
+              
+      <a href="#" onclick="window.history.go(-1); return false;">
+          <button type="button" class="btn btn-outline-primary mws">Cancel</button>
+      </a>
+  </div>
+
+</div>
+
+</form>
+
+
+</div>
+
+{% endblock %}

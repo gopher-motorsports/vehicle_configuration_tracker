@@ -113,6 +113,89 @@ def viewSetup(request, pk):
     context = {'id': setup.id, 'setup':setup, 'obj':obj, 'setup_params':setup_params}
     return render(request, 'vehicle_config/viewSetup.html', context)
 
+def viewSetup2(request, pk):
+    setup = get_object_or_404(Setup, id=pk)
+    obj = "Setup"
+    #setup_params = setup.setupparam_set.all()
+
+    # General Information
+    event_name = setup.setupparam_set.filter(name="Event Name").get().value
+    driver_name = setup.setupparam_set.filter(name="Driver Name").get().value
+    track = setup.setupparam_set.filter(name="Track").get().value
+    #date = request.POST['date']
+    ambient_temp = setup.setupparam_set.filter(name="Ambient Temperature").get().value
+    track_temp = setup.setupparam_set.filter(name="Track Temperature").get().value
+
+    # Front, Left Side
+    cold_pressure_fl = setup.setupparam_set.filter(name="Cold Pressure - Front Left Tire").get().value
+    hot_pressure_fl = setup.setupparam_set.filter(name="Hot Pressure - Front Left Tire").get().value
+    camber_fl = setup.setupparam_set.filter(name="Camber - Front Left").get().value
+    toe_fl = setup.setupparam_set.filter(name="Toe - Front Left").get().value
+    ls_compression_fl = setup.setupparam_set.filter(name="LS Compression - Front Left").get().value
+    hs_compression_fl = setup.setupparam_set.filter(name="HS Compression - Front Left").get().value
+    hs_rebound_fl = setup.setupparam_set.filter(name="HS Rebound - Front Left").get().value
+
+    # Front, Right Side
+    cold_pressure_fr = setup.setupparam_set.filter(name="Cold Pressure - Front Right Tire").get().value
+    hot_pressure_fr = setup.setupparam_set.filter(name="Hot Pressure - Front Right Tire").get().value
+    camber_fr = setup.setupparam_set.filter(name="Camber - Front Right").get().value
+    toe_fr = setup.setupparam_set.filter(name="Toe - Front Right").get().value
+    ls_compression_fr = setup.setupparam_set.filter(name="LS Compression - Front Right").get().value
+    hs_compression_fr = setup.setupparam_set.filter(name="HS Compression - Front Right").get().value
+    hs_rebound_fr = setup.setupparam_set.filter(name="HS Rebound - Front Right").get().value
+
+
+    # # Front, Center
+    # ride_height_f = request.POST['ride-height-f']
+    # wing_f = request.POST['wing-f']
+    # spring_rate_f = request.POST['spring-rate-f']
+    # arb_setting_f = request.POST['arb-setting-f']
+
+    # # Back, Left Side
+    # cold_pressure_bl = request.POST['cold-pressure-bl']
+    # hot_pressure_bl = request.POST['hot-pressure-bl']
+    # camber_bl = request.POST['camber-bl']
+    # toe_bl = request.POST['toe-bl']
+    # ls_compression_bl = request.POST['ls-compression-bl']
+    # hs_compression_bl = request.POST['hs-compression-bl']
+    # hs_rebound_bl = request.POST['hs-rebound-bl']
+
+    # # Back, Right Side
+    # cold_pressure_br = request.POST['cold-pressure-br']
+    # hot_pressure_br = request.POST['hot-pressure-br']
+    # camber_br = request.POST['camber-br']
+    # toe_br = request.POST['toe-br']
+    # ls_compression_br = request.POST['ls-compression-br']
+    # hs_compression_br = request.POST['hs-compression-br']
+    # hs_rebound_br = request.POST['hs-rebound-br']
+
+    # # Back, Center
+    # ride_height_b = request.POST['ride-height-b']
+    # wing_b = request.POST['wing-b']
+    # spring_rate_b = request.POST['spring-rate-b']
+    # arb_setting_b = request.POST['arb-setting-b']
+
+    # # Adj Info for Shocks
+    # shock_info = request.POST['shock-info']
+    
+    # # Team Notes / Track Info
+    # team_notes = request.POST['team-notes']
+    # track_info = request.POST['track-info']
+
+    # # Driver Feedback
+    # driver_feedback = request.POST['driver-feedback']
+
+    if request.method == 'POST':
+        context = {'id': setup.id, 'setup':setup, 'obj':obj, 
+        'event_name':event_name, 'driver_name':driver_name, 'track':track, 'ambient_temp':ambient_temp, 'track_temp':track_temp}
+        return render(request, 'vehicle_config/viewSetup2.html', context)
+    
+    
+    context = {'id': setup.id, 'setup':setup, 'obj':obj, 
+    'event_name':event_name, 'driver_name':driver_name, 'track':track, 'ambient_temp':ambient_temp, 'track_temp':track_temp}
+    return render(request, 'vehicle_config/viewSetup2.html', context)
+
+
 def viewAssembly(request, pk):
     assembly = get_object_or_404(Assembly, id=pk)
     sub_assemblies = assembly.assemblies.all().order_by('-date_created')

@@ -11,6 +11,7 @@ urlpatterns = [
 
     path('view/Vehicle/<int:pk>/', views.viewVehicle, name='viewVehicle'),
     path('view/Setup/<int:pk>/', views.viewSetup, name='viewSetup'),
+    path('view/Setup2/<int:pk>/', views.viewSetup2, name='viewSetup2'),
     path('view/Assembly/<int:pk>/', views.viewAssembly, name='viewAssembly'),
     path('view/Part/<int:pk>/', views.viewPart, name='viewPart'),
     path('view/SetupParam/<int:pk>/', views.viewSetupParam, name='viewSetupParam'),
