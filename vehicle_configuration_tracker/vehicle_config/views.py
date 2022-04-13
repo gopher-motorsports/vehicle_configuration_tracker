@@ -116,74 +116,76 @@ def viewSetup(request, pk):
 def viewSetup2(request, pk):
     setup = get_object_or_404(Setup, id=pk)
     obj = "Setup"
-    #setup_params = setup.setupparam_set.all()
+    setup_params = setup.setupparam_set.all()
 
     # General Information
-    event_name = setup.setupparam_set.filter(name="Event Name").get().value
-    driver_name = setup.setupparam_set.filter(name="Driver Name").get().value
-    track = setup.setupparam_set.filter(name="Track").get().value
+    event_name = setup_params.filter(name="Event Name").get()
+    driver_name = setup_params.filter(name="Driver Name").get()
+    track = setup_params.filter(name="Track").get()
     #date = request.POST['date']
-    ambient_temp = setup.setupparam_set.filter(name="Ambient Temperature").get().value
-    track_temp = setup.setupparam_set.filter(name="Track Temperature").get().value
+    ambient_temp = setup_params.filter(name="Ambient Temperature").get()
+    track_temp = setup_params.filter(name="Track Temperature").get()
 
     # Front, Left Side
-    cold_pressure_fl = setup.setupparam_set.filter(name="Cold Pressure - Front Left Tire").get().value
-    hot_pressure_fl = setup.setupparam_set.filter(name="Hot Pressure - Front Left Tire").get().value
-    camber_fl = setup.setupparam_set.filter(name="Camber - Front Left").get().value
-    toe_fl = setup.setupparam_set.filter(name="Toe - Front Left").get().value
-    ls_compression_fl = setup.setupparam_set.filter(name="LS Compression - Front Left").get().value
-    hs_compression_fl = setup.setupparam_set.filter(name="HS Compression - Front Left").get().value
-    hs_rebound_fl = setup.setupparam_set.filter(name="HS Rebound - Front Left").get().value
+    cold_pressure_fl =setup_params.filter(name="Cold Pressure - Front Left Tire").get()
+    hot_pressure_fl = setup_params.filter(name="Hot Pressure - Front Left Tire").get()
+    camber_fl = setup_params.filter(name="Camber - Front Left").get()
+    toe_fl = setup_params.filter(name="Toe - Front Left").get()
+    ls_compression_fl = setup_params.filter(name="LS Compression - Front Left").get()
+    hs_compression_fl = setup_params.filter(name="HS Compression - Front Left").get()
+    hs_rebound_fl = setup_params.filter(name="HS Rebound - Front Left").get()
 
     # Front, Right Side
-    cold_pressure_fr = setup.setupparam_set.filter(name="Cold Pressure - Front Right Tire").get().value
-    hot_pressure_fr = setup.setupparam_set.filter(name="Hot Pressure - Front Right Tire").get().value
-    camber_fr = setup.setupparam_set.filter(name="Camber - Front Right").get().value
-    toe_fr = setup.setupparam_set.filter(name="Toe - Front Right").get().value
-    ls_compression_fr = setup.setupparam_set.filter(name="LS Compression - Front Right").get().value
-    hs_compression_fr = setup.setupparam_set.filter(name="HS Compression - Front Right").get().value
-    hs_rebound_fr = setup.setupparam_set.filter(name="HS Rebound - Front Right").get().value
+    cold_pressure_fr = setup_params.filter(name="Cold Pressure - Front Right Tire").get()
+    hot_pressure_fr = setup_params.filter(name="Hot Pressure - Front Right Tire").get()
+    camber_fr = setup_params.filter(name="Camber - Front Right").get()
+    toe_fr = setup_params.filter(name="Toe - Front Right").get()
+    ls_compression_fr = setup_params.filter(name="LS Compression - Front Right").get()
+    hs_compression_fr = setup_params.filter(name="HS Compression - Front Right").get()
+    hs_rebound_fr = setup_params.filter(name="HS Rebound - Front Right").get()
 
 
-    # # Front, Center
-    # ride_height_f = request.POST['ride-height-f']
-    # wing_f = request.POST['wing-f']
-    # spring_rate_f = request.POST['spring-rate-f']
-    # arb_setting_f = request.POST['arb-setting-f']
+    # Front, Center
+    ride_height_f = setup_params.filter(name="Ride Height - Front").get()
+    wing_f = setup_params.filter(name="Wing - Front").get()
+    spring_rate_f = setup_params.filter(name="Spring Rate - Front").get()
+    arb_setting_f = setup_params.filter(name="ARB Setting - Front").get()
 
-    # # Back, Left Side
-    # cold_pressure_bl = request.POST['cold-pressure-bl']
-    # hot_pressure_bl = request.POST['hot-pressure-bl']
-    # camber_bl = request.POST['camber-bl']
-    # toe_bl = request.POST['toe-bl']
-    # ls_compression_bl = request.POST['ls-compression-bl']
-    # hs_compression_bl = request.POST['hs-compression-bl']
-    # hs_rebound_bl = request.POST['hs-rebound-bl']
+    # Back, Left Side
+    cold_pressure_bl = setup_params.filter(name="Cold Pressure - Back Left Tire").get()
+    hot_pressure_bl = setup_params.filter(name="Hot Pressure - Back Left Tire").get()
+    camber_bl = setup_params.filter(name="Camber - Back Left").get()
+    toe_bl = setup_params.filter(name="Toe - Back Left").get()
+    ls_compression_bl = setup_params.filter(name="LS Compression - Back Left").get()
+    hs_compression_bl = setup_params.filter(name="HS Compression - Back Left").get()
+    hs_rebound_bl = setup_params.filter(name="HS Rebound - Back Left").get()
 
-    # # Back, Right Side
-    # cold_pressure_br = request.POST['cold-pressure-br']
-    # hot_pressure_br = request.POST['hot-pressure-br']
-    # camber_br = request.POST['camber-br']
-    # toe_br = request.POST['toe-br']
-    # ls_compression_br = request.POST['ls-compression-br']
-    # hs_compression_br = request.POST['hs-compression-br']
-    # hs_rebound_br = request.POST['hs-rebound-br']
 
-    # # Back, Center
-    # ride_height_b = request.POST['ride-height-b']
-    # wing_b = request.POST['wing-b']
-    # spring_rate_b = request.POST['spring-rate-b']
-    # arb_setting_b = request.POST['arb-setting-b']
+    # Back, Right Side
+    cold_pressure_br = setup_params.filter(name="Cold Pressure - Back Right Tire").get()
+    hot_pressure_br = setup_params.filter(name="Hot Pressure - Back Right Tire").get()
+    camber_br = setup_params.filter(name="Camber - Back Right").get()
+    toe_br = setup_params.filter(name="Toe - Back Right").get()
+    ls_compression_br = setup_params.filter(name="LS Compression - Back Right").get()
+    hs_compression_br = setup_params.filter(name="HS Compression - Back Right").get()
+    hs_rebound_br = setup_params.filter(name="HS Rebound - Back Right").get()
 
-    # # Adj Info for Shocks
-    # shock_info = request.POST['shock-info']
+
+    # Back, Center
+    ride_height_b = setup_params.filter(name="Ride Height - Back").get()
+    wing_b = setup_params.filter(name="Wing - Back").get()
+    spring_rate_b = setup_params.filter(name="Spring Rate - Back").get()
+    arb_setting_b = setup_params.filter(name="ARB Setting - Back").get()
+
+    # Adj Info for Shocks
+    shock_info = setup_params.filter(name="Shocks Information").get()
     
-    # # Team Notes / Track Info
-    # team_notes = request.POST['team-notes']
-    # track_info = request.POST['track-info']
+    # Team Notes / Track Info
+    team_notes = setup_params.filter(name="Team Notes").get()
+    track_info = setup_params.filter(name="Track Information").get()
 
-    # # Driver Feedback
-    # driver_feedback = request.POST['driver-feedback']
+    # Driver Feedback
+    driver_feedback = setup_params.filter(name="Driver Feedback").get()
 
     if request.method == 'POST':
         context = {'id': setup.id, 'setup':setup, 'obj':obj, 
@@ -192,7 +194,17 @@ def viewSetup2(request, pk):
     
     
     context = {'id': setup.id, 'setup':setup, 'obj':obj, 
-    'event_name':event_name, 'driver_name':driver_name, 'track':track, 'ambient_temp':ambient_temp, 'track_temp':track_temp}
+    'event_name':event_name, 'driver_name':driver_name, 'track':track, 'ambient_temp':ambient_temp, 'track_temp':track_temp,
+    'cold_pressure_fl':cold_pressure_fl, 'hot_pressure_fl':hot_pressure_fl, 'camber_fl':camber_fl, 'toe_fl':toe_fl, 'ls_compression_fl':ls_compression_fl, 'hs_compression_fl':hs_compression_fl, 'hs_rebound_fl':hs_rebound_fl,
+    'cold_pressure_fr':cold_pressure_fr, 'hot_pressure_fr':hot_pressure_fr, 'camber_fr':camber_fr, 'toe_fr':toe_fr, 'ls_compression_fr':ls_compression_fr, 'hs_compression_fr':hs_compression_fr, 'hs_rebound_fr':hs_rebound_fr,
+    'ride_height_f':ride_height_f, 'wing_f':wing_f, 'spring_rate_f':spring_rate_f, 'arb_setting_f':arb_setting_f,
+    'cold_pressure_br':cold_pressure_br, 'hot_pressure_br':hot_pressure_br, 'camber_br':camber_br, 'toe_br':toe_br, 'ls_compression_br':ls_compression_br, 'hs_compression_br':hs_compression_br, 'hs_rebound_br':hs_rebound_br,
+    'cold_pressure_bl':cold_pressure_bl, 'hot_pressure_bl':hot_pressure_bl, 'camber_bl':camber_bl, 'toe_bl':toe_bl, 'ls_compression_bl':ls_compression_bl, 'hs_compression_bl':hs_compression_bl, 'hs_rebound_bl':hs_rebound_bl,
+    'ride_height_b':ride_height_b, 'wing_b':wing_b, 'spring_rate_b':spring_rate_b, 'arb_setting_b':arb_setting_b,
+    'shock_info':shock_info,
+    'team_notes':team_notes, 'track_info':track_info,
+    'driver_feedback':driver_feedback }
+   
     return render(request, 'vehicle_config/viewSetup2.html', context)
 
 
@@ -484,7 +496,7 @@ def createSetup(request, pk):
         driver_feedback = request.POST['driver-feedback']
 
         # Create Setup Object
-        curSetup = Setup.objects.create(name=event_name, driver_name=driver_name, track=track, ambient_temp=ambient_temp, track_temp=track_temp, parent_vehicle=parent_vehicle)
+        curSetup = Setup.objects.create(name=event_name, parent_vehicle=parent_vehicle)
         curSetup.save()
 
         # General Information Setup Parameters
@@ -522,7 +534,7 @@ def createSetup(request, pk):
         SetupParam.objects.create(value=cold_pressure_bl, units="psi", name="Cold Pressure - Back Left Tire", parent_setup=curSetup)
         SetupParam.objects.create(value=hot_pressure_bl, units="psi", name="Hot Pressure - Back Left Tire", parent_setup=curSetup)
         SetupParam.objects.create(value=camber_bl, units="deg", name="Camber - Back Left", parent_setup=curSetup)
-        SetupParam.objects.create(value=toe_bl, units="deg", name="Toe - Back Right", parent_setup=curSetup)
+        SetupParam.objects.create(value=toe_bl, units="deg", name="Toe - Back Left", parent_setup=curSetup)
         SetupParam.objects.create(value=ls_compression_bl, name="LS Compression - Back Left", parent_setup=curSetup)
         SetupParam.objects.create(value=hs_compression_bl, name="HS Compression - Back Left", parent_setup=curSetup)
         SetupParam.objects.create(value=hs_rebound_bl, name="HS Rebound - Back Left", parent_setup=curSetup)

@@ -26,13 +26,13 @@
                   <div class="col col-lg-4 col-12">
                     <div class="input-group input-group mb-3">
                       <span class="input-group-text mwgg">Driver Name</span>
-                      <input type="text" class="form-control" id="driver-name" name="driver-name" value="{{ driver_name }}" required>
+                      <input type="text" class="form-control" id="driver-name" name="driver-name" value="{{ driver_name.value }}" required>
                     </div>
                   </div>
                   <div class="col col-lg-4 col-12">
                     <div class="input-group input-group mb-3">
                       <span class="input-group-text mwgg">Event Name</span>
-                      <input type="text" class="form-control" id="event-name" name="event-name" value="{{ event_name }}" required>
+                      <input type="text" class="form-control" id="event-name" name="event-name" value="{{ event_name.value }}" required>
                     </div>
                 </div>
             </div>
@@ -41,20 +41,20 @@
               <div class="col col-lg-4 col-12">
                 <div class="input-group input-group mb-3">
                   <span class="input-group-text mwgg">Track</span>
-                  <input type="text" class="form-control" id="track" name="track" value="{{ track }}" required>
+                  <input type="text" class="form-control" id="track" name="track" value="{{ track.value }}" required>
                 </div>
               </div>
                 <div class="col col-lg-4 col-12">
                   <div class="input-group input-group mb-3">
                     <span class="input-group-text mwgg">Ambient Temperature</span>
-                    <input type="text" class="form-control" id="ambient-temp" name="ambient-temp" value="{{ ambient_temp }}" required>
+                    <input type="text" class="form-control" id="ambient-temp" name="ambient-temp" value="{{ ambient_temp.value }}" required>
                     <span class="input-group-text">&deg;F</span>
                   </div>
                 </div>
                 <div class="col col-lg-4 col-12">
                   <div class="input-group input-group mb-3">
                     <span class="input-group-text mwgg">Track Temperature</span>
-                    <input type="text" class="form-control" id="track-temp" name="track-temp" value="{{ track_temp }}" required>
+                    <input type="text" class="form-control" id="track-temp" name="track-temp" value="{{ track_temp.value }}" required>
                     <span class="input-group-text">&deg;F</span>
                   </div>
               </div>
@@ -84,47 +84,47 @@
                     <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Cold Pressure</span>
-                          <input type="text" class="form-control" id="cold-pressure-fl" name="cold-pressure-fl">
+                          <input type="text" class="form-control" id="cold-pressure-fl" name="cold-pressure-fl" value="{{ cold_pressure_fl.value }}">
                           <span class="input-group-text">psi</span>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Hot Pressure</span>
-                          <input type="text" class="form-control" id="hot-pressure-fl" name="hot-pressure-fl">
+                          <input type="text" class="form-control" id="hot-pressure-fl" name="hot-pressure-fl" value="{{ hot_pressure_fl.value }}">
                           <span class="input-group-text">psi</span>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Camber</span>
-                          <input type="text" class="form-control" id="camber-fl" name="camber-fl">
+                          <input type="text" class="form-control" id="camber-fl" name="camber-fl" value="{{ camber_fl.value }}">
                           <span class="input-group-text">deg</span>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Toe</span>
-                          <input type="text" class="form-control" id="toe-fl" name="toe-fl">
+                          <input type="text" class="form-control" id="toe-fl" name="toe-fl" value="{{ toe_fl.value }}">
                           <span class="input-group-text">deg</span>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">LS Compression</span>
-                          <input type="text" class="form-control" id="ls-compression-fl" name="ls-compression-fl">
+                          <input type="text" class="form-control" id="ls-compression-fl" name="ls-compression-fl" value="{{ ls_compression_fl.value }}">
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">HS Compression</span>
-                          <input type="text" class="form-control" id="hs-compression-fl" name="hs-compression-fl">
+                          <input type="text" class="form-control" id="hs-compression-fl" name="hs-compression-fl" value="{{ hs_compression_fl.value }}">
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">HS Rebound</span>
-                          <input type="text" class="form-control" id="hs-rebound-fl" name="hs-rebound-fl">
+                          <input type="text" class="form-control" id="hs-rebound-fl" name="hs-rebound-fl" value="{{ hs_rebound_fl.value }}">
                         </div>
                       </div>
 
@@ -135,47 +135,47 @@
                     <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Cold Pressure</span>
-                          <input type="text" class="form-control" id="cold-pressure-fr" name="cold-pressure-fr">
+                          <input type="text" class="form-control" id="cold-pressure-fr" name="cold-pressure-fr" value="{{ cold_pressure_fr.value }}">
                           <span class="input-group-text">psi</span>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Hot Pressure</span>
-                          <input type="text" class="form-control" id="hot-pressure-fr" name="hot-pressure-fr">
+                          <input type="text" class="form-control" id="hot-pressure-fr" name="hot-pressure-fr" value="{{ hot_pressure_fr.value }}">
                           <span class="input-group-text">psi</span>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Camber</span>
-                          <input type="text" class="form-control" id="camber-fr" name="camber-fr">
+                          <input type="text" class="form-control" id="camber-fr" name="camber-fr" value="{{ camber_fr.value }}">
                           <span class="input-group-text">deg</span>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Toe</span>
-                          <input type="text" class="form-control" id="toe-fr" name="toe-fr">
+                          <input type="text" class="form-control" id="toe-fr" name="toe-fr" value="{{ toe_fr.value }}">
                           <span class="input-group-text">deg</span>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">LS Compression</span>
-                          <input type="text" class="form-control" id="ls-compression-fr" name="ls-compression-fr">
+                          <input type="text" class="form-control" id="ls-compression-fr" name="ls-compression-fr" value="{{ ls_compression_fr.value }}">
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">HS Compression</span>
-                          <input type="text" class="form-control" id="hs-compression-fr" name="hs-compression-fr">
+                          <input type="text" class="form-control" id="hs-compression-fr" name="hs-compression-fr" value="{{ hs_compression_fr.value }}">
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">HS Rebound</span>
-                          <input type="text" class="form-control" id="hs-rebound-fr" name="hs-rebound-fr">
+                          <input type="text" class="form-control" id="hs-rebound-fr" name="hs-rebound-fr" value="{{ hs_rebound_fr.value }}">
                         </div>
                       </div>
   
@@ -187,19 +187,19 @@
                   
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Ride Height</span>
-                          <input type="text" class="form-control" id="ride-height-f" name="ride-height-f">
+                          <input type="text" class="form-control" id="ride-height-f" name="ride-height-f" value="{{ ride_height_f.value }}">
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Wing</span>
-                          <input type="text" class="form-control" id="wing-f" name="wing-f">
+                          <input type="text" class="form-control" id="wing-f" name="wing-f" value="{{ wing_f.value }}">
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-group input-group-sm mb-3">
                           <span class="input-group-text mwgg">Spring Rate</span>
-                          <input type="text" class="form-control" id="spring-rate-f" name="spring-rate-f">
+                          <input type="text" class="form-control" id="spring-rate-f" name="spring-rate-f" value="{{ spring_rate_f.value }}">
                         </div>
                       </div>
 
@@ -207,7 +207,7 @@
                         <div class="input-group input-group-sm mb-0">
                           <span class="input-group-text mwgg">ARB Setting</span>
                           
-                          <input type="range" class="form-range mt-2 mb-0 pb-0" min="0" max="5" id="arb-setting-f" name="arb-setting-f">
+                          <input type="range" class="form-range mt-2 mb-0 pb-0" min="0" max="5" id="arb-setting-f" name="arb-setting-f" value="{{ arb_setting_f.value }}">
                           
 
                         </div>
@@ -252,47 +252,47 @@
                   <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Cold Pressure</span>
-                        <input type="text" class="form-control" id="cold-pressure-bl" name="cold-pressure-bl">
+                        <input type="text" class="form-control" id="cold-pressure-bl" name="cold-pressure-bl" value="{{ cold_pressure_bl.value }}">
                         <span class="input-group-text">psi</span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Hot Pressure</span>
-                        <input type="text" class="form-control" id="hot-pressure-bl" name="hot-pressure-bl">
+                        <input type="text" class="form-control" id="hot-pressure-bl" name="hot-pressure-bl" value="{{ hot_pressure_bl.value }}">
                         <span class="input-group-text">psi</span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Camber</span>
-                        <input type="text" class="form-control" id="camber-bl" name="camber-bl">
+                        <input type="text" class="form-control" id="camber-bl" name="camber-bl" value="{{ camber_bl.value }}">
                         <span class="input-group-text">deg</span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Toe</span>
-                        <input type="text" class="form-control" id="toe-bl" name="toe-bl">
+                        <input type="text" class="form-control" id="toe-bl" name="toe-bl" value="{{ toe_bl.value }}">
                         <span class="input-group-text">deg</span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">LS Compression</span>
-                        <input type="text" class="form-control" id="ls-compression-bl" name="ls-compression-bl">
+                        <input type="text" class="form-control" id="ls-compression-bl" name="ls-compression-bl" value="{{ ls_compression_bl.value }}">
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">HS Compression</span>
-                        <input type="text" class="form-control" id="hs-compression-bl" name="hs-compression-bl">
+                        <input type="text" class="form-control" id="hs-compression-bl" name="hs-compression-bl" value="{{ hs_compression_bl.value }}">
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">HS Rebound</span>
-                        <input type="text" class="form-control" id="hs-rebound-bl" name="hs-rebound-bl">
+                        <input type="text" class="form-control" id="hs-rebound-bl" name="hs-rebound-bl" value="{{ hs_rebound_bl.value }}">
                       </div>
                     </div>
 
@@ -303,47 +303,47 @@
                   <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Cold Pressure</span>
-                        <input type="text" class="form-control" id="cold-pressure-br" name="cold-pressure-br">
+                        <input type="text" class="form-control" id="cold-pressure-br" name="cold-pressure-br" value="{{ cold_pressure_br.value }}">
                         <span class="input-group-text">psi</span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Hot Pressure</span>
-                        <input type="text" class="form-control" id="hot-pressure-br" name="hot-pressure-br">
+                        <input type="text" class="form-control" id="hot-pressure-br" name="hot-pressure-br" value="{{ hot_pressure_br.value }}">
                         <span class="input-group-text">psi</span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Camber</span>
-                        <input type="text" class="form-control" id="camber-br" name="camber-br">
+                        <input type="text" class="form-control" id="camber-br" name="camber-br" value="{{ camber_br.value }}">
                         <span class="input-group-text">deg</span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Toe</span>
-                        <input type="text" class="form-control" id="toe-br" name="toe-br">
+                        <input type="text" class="form-control" id="toe-br" name="toe-br" value="{{ toe_br.value }}">
                         <span class="input-group-text">deg</span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">LS Compression</span>
-                        <input type="text" class="form-control" id="ls-compression-br" name="ls-compression-br">
+                        <input type="text" class="form-control" id="ls-compression-br" name="ls-compression-br" value="{{ ls_compression_br.value }}">
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">HS Compression</span>
-                        <input type="text" class="form-control" id="hs-compression-br" name="hs-compression-br">
+                        <input type="text" class="form-control" id="hs-compression-br" name="hs-compression-br" value="{{ hs_compression_br.value }}">
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">HS Rebound</span>
-                        <input type="text" class="form-control" id="hs-rebound-br" name="hs-rebound-br">
+                        <input type="text" class="form-control" id="hs-rebound-br" name="hs-rebound-br" value="{{ hs_rebound_br.value }}">
                       </div>
                     </div>
 
@@ -355,19 +355,19 @@
                 
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Ride Height</span>
-                        <input type="text" class="form-control" id="ride-height-b" name="ride-height-b">
+                        <input type="text" class="form-control" id="ride-height-b" name="ride-height-b" value="{{ ride_height_b.value }}">
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Wing</span>
-                        <input type="text" class="form-control" id="wing-b" name="wing-b">
+                        <input type="text" class="form-control" id="wing-b" name="wing-b" value="{{ wing_b.value }}">
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text mwgg">Spring Rate</span>
-                        <input type="text" class="form-control" id="spring-rate-b" name="spring-rate-b">
+                        <input type="text" class="form-control" id="spring-rate-b" name="spring-rate-b" value="{{ spring_rate_b.value }}">
                       </div>
                     </div>
 
@@ -375,7 +375,7 @@
                       <div class="input-group input-group-sm mb-0">
                         <span class="input-group-text mwgg">ARB Setting</span>
                         
-                        <input type="range" class="form-range mt-2 mb-0 pb-0" min="0" max="5" id="arb-setting-b" name="arb-setting-b">
+                        <input type="range" class="form-range mt-2 mb-0 pb-0" min="0" max="5" id="arb-setting-b" name="arb-setting-b" value="{{ arb_setting_b.value }}">
                         
 
                       </div>
@@ -418,7 +418,7 @@
                 
                     <div class="input-group input-group-lg">
                         <span class="input-group-text mwgg">Adjusting Information For Shocks</span>
-                        <textarea class="form-control" aria-label="With textarea" id="shock-info" name="shock-info"></textarea>
+                        <textarea class="form-control" aria-label="With textarea" id="shock-info" name="shock-info"> {{ shock_info.value }} </textarea>
                     </div>
                 
             </div>
@@ -441,13 +441,13 @@
                   <div class = "col col-lg-6 col-12">
                     <div class="input-group input-group-lg">
                         <span class="input-group-text mwgg">Team Notes</span>
-                        <textarea class="form-control" aria-label="With textarea" id="team-notes" name="team-notes"></textarea>
+                        <textarea class="form-control" aria-label="With textarea" id="team-notes" name="team-notes">{{ team_notes.value }}</textarea>
                     </div>
                   </div>
                   <div class = "col col-lg-6 col-12">
                     <div class="input-group input-group-lg">
                         <span class="input-group-text mwgg">Track Information</span>
-                        <textarea class="form-control" aria-label="With textarea" id="track-info" name="track-info"></textarea>
+                        <textarea class="form-control" aria-label="With textarea" id="track-info" name="track-info" >{{ track_info.value }}</textarea>
                     </div>
                   </div>
                 
@@ -471,7 +471,7 @@
                 
                     <div class="input-group input-group-lg">
                         <span class="input-group-text mwgg">Driver Feedback</span>
-                        <textarea class="form-control" aria-label="With textarea" id="driver-feedback" name="driver-feedback"></textarea>
+                        <textarea class="form-control" aria-label="With textarea" id="driver-feedback" name="driver-feedback">{{ driver_feedback.value }}</textarea>
                     </div>
                 
             </div>
@@ -494,7 +494,7 @@
       <input class="btn btn-outline-primary mws" type="submit" value="Submit">
               
       <a href="#" onclick="window.history.go(-1); return false;">
-          <button type="button" class="btn btn-outline-primary mws">Cancel</button>
+          <button type="button" class="btn btn-outline-primary mws">Revert All Changes</button>
       </a>
   </div>
 
