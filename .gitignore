@@ -1,4 +1,5 @@
 venv/
 *.pyc
 _pycache_
+vehicle_configuration_tracker/vehicle_configuration_tracker/settings.py
 db.sqlite3
