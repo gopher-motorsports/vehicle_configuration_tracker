@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container-fluid py-2">
 <form method="post" autocomplete="off">
-  <h1 class="m1">Create Setup</h1>
+  <h1 class="m1">Edit Setup</h1>
   {% csrf_token %}
   <div class="row mt-4">
     <div class="col col-lg-8 offset-lg-2 col-12"> 
@@ -494,7 +494,7 @@
       <input class="btn btn-outline-primary mws" type="submit" value="Submit">
               
       <a href="#" onclick="window.history.go(-1); return false;">
-          <button type="button" class="btn btn-outline-primary mws">Revert All Changes</button>
+          <button type="button" class="btn btn-outline-primary mws">Cancel</button>
       </a>
   </div>
 
